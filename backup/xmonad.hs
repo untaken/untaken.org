@@ -18,6 +18,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.ManageHelpers
 
+import XMonad.Layout.Spacing
 import XMonad.Layout.NoBorders (smartBorders, noBorders)
 import XMonad.Layout.PerWorkspace (onWorkspace, onWorkspaces)
 import XMonad.Layout.Reflect (reflectHoriz)
@@ -44,7 +45,7 @@ myTerminal      = "urxvt +bc +uc -cr Green"
  
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 1
+myBorderWidth   = 0
  
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -248,10 +249,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- 
 --     -- Percent of screen to increment by when resizing panes
 --     delta   = 3/100
-myLayout  =  onWorkspaces ["1:tmux", "7:spotify" ]        allLayout $ 
+myLayout  =  spacing 7 $ onWorkspaces ["1:tmux", "7:spotify" ]        allLayout $ 
              onWorkspaces ["2:tmux", "3:web", "5:thunar", "4:IM"] tallLayout $ 
---             onWorkspaces ["4:IM"]                        imLayout $
-                                                          allLayout
+             allLayout
 -- Layout
 tallLayout = avoidStruts $ Full ||| tiled --- ||| simpleFloat
   where
