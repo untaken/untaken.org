@@ -235,7 +235,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 --     delta   = 3/100
 myLayout  =  spacing 7                                                          $
              onWorkspaces ["1:tmux", "7:spotify" ]                    allLayout $
-             onWorkspaces ["2:tmux", "3:web", "5:thunar", "6:email"] tallLayout $
+             -- onWorkspaces ["2:tmux", "3:web", "5:thunar", "6:email"] tallLayout $
+             onWorkspaces ["2:tmux", "3:web", "6:email"]             tallLayout $
+             onWorkspaces ["5:thunar"]                             thunarLayout $
              onWorkspaces ["4:IM"]                                     imLayout $
              allLayout
 -- Layout
@@ -254,6 +256,8 @@ imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz
     skypeRatio      = (1%8)
     pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
     skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
+
+thunarLayout = withIM (1%3) (ClassName "Thunar") Grid ||| Full
 
 -- }}}
 
