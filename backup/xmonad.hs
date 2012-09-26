@@ -13,7 +13,6 @@ import XMonad.Actions.OnScreen
 
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
-import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.ManageHelpers
@@ -41,7 +40,8 @@ import Data.Ratio ((%))
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "urxvt +bc +uc -cr Green"
+-- myTerminal      = "urxvt +bc +uc -cr Green"
+myTerminal      = "urxvtc +bc +uc -cr Green"
 
 -- Width of the window border in pixels.
 --
@@ -85,8 +85,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xK_Alt_R      ), windows $ viewOnScreen 0 "2:tmux" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Super_R      ), windows $ viewOnScreen 0 "3:web" . viewOnScreen 1 "1:tmux")
 --    , ((0, xK_Menu      ), windows $ viewOnScreen 0 "4:IM" . viewOnScreen 1 "1:tmux")
-    , ((0, xK_Menu      ), windows $ viewOnScreen 0 "4:IM" . viewOnScreen 1 "6:email")
-    , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "5:thunar" . viewOnScreen 1 "1:tmux")
+    , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "4:IM" . viewOnScreen 1 "1:tmux")
+    , ((0, xK_Menu      ), windows $ viewOnScreen 0 "5:thunar" . viewOnScreen 1 "6:email")
     , ((modm, xK_Control_R      ), windows $ viewOnScreen 0 "7:spotify" . viewOnScreen 1 "1:tmux")
 
      -- Rotate through the available layout algorithms
@@ -252,10 +252,10 @@ allLayout = avoidStruts $ Full ||| tiled ||| Mirror tiled --- ||| simpleFloat
 imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (Full ||| Grid)
   where
     chatLayout      = Grid
-    ratio           = (1%9)
+    ratio           = (1%8)
     skypeRatio      = (1%8)
     pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
-    skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
+    skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm")) `And` (Not (Role "ConversationsWindow"))
 
 thunarLayout = withIM (1%3) (ClassName "Thunar") Grid ||| Full
 
@@ -284,18 +284,17 @@ thunarLayout = withIM (1%3) (ClassName "Thunar") Grid ||| Full
 myManageHook = (composeAll . concat $
     [ [resource     =? r          --> doIgnore             |   r   <- myIgnores]
       -- ignore desktop
-    , [appName      =? c          --> doShift  "1:tmux"    |   c   <- myTmx1   ]     -- move dev to main
-    , [className    =? c          --> doShift  "2:tmux"    |   c   <- myTmx2   ]     -- move webs to main
+    , [title        =? "Tmux1"    --> doShift  "1:tmux"]
+    , [title        =? "Tmux2"    --> doShift  "2:tmux"] 
     , [className    =? c          --> doShift  "3:web"     |   c   <- myWebs   ]     -- move webs to main
     , [className    =? c          --> doShift  "4:IM"      |   c   <- myChat   ]
+    , [title        =? "IRC"      --> doShift "4:IM"]
       -- move chat to chat
     , [className    =? c          --> doShift  "5:thunar"  |   c   <- myThunar ]     -- move img to div
     , [className    =? c          --> doShift  "7:spotify" |   c   <- myMusic  ]     -- move music to music
     , [className    =?           "Orage" --> doFloatAt (1/1680) (1-176/1050) ]
     , [className    =?           "Thunderbird" --> doShift "6:email" ]
     , [className    =? "Pidgin" <&&> title =? "Buddy List" --> doShift "6:email"]
---   , [title =? "Buddy List" --> doFloatAt (1/1680) (1-400/1050) ]
---    , [className    =? "Pidgin"  --> doFloatAt (1/1680) (1-176/1050) ]
     , [className    =? c          --> doCenterFloat | c <- myFloats ]
     ])
 
@@ -307,9 +306,7 @@ myManageHook = (composeAll . concat $
         myWebs    = ["Firefox","Google-chrome","Chromium", "Chromium-browser","chromium-browser"]
         myMusic   = ["Rhythmbox","Spotify"]
         myChat    = ["Pidgin", "Psi", "Psi+", "chat", "psi", "Skype"]
-        --myChat          = ["Psi", "Psi+", "chat", "psi", "Skype"]
         myThunar  = ["Thunar","Gedit"]
-        myDev     = ["urxvt"]
         myTmx1    = ["Tmux1","Firebug"]
         myTmx2    = ["Tmux2"]
 
