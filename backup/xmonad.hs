@@ -10,6 +10,7 @@ import XMonad.Actions.SpawnOn
 import XMonad.Util.Paste
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.OnScreen
+import XMonad.Actions.UpdatePointer
 
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
@@ -235,7 +236,6 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 --     delta   = 3/100
 myLayout  =  spacing 7                                                          $
              onWorkspaces ["1:tmux", "7:spotify" ]                    allLayout $
-             -- onWorkspaces ["2:tmux", "3:web", "5:thunar", "6:email"] tallLayout $
              onWorkspaces ["2:tmux", "3:web", "6:email"]             tallLayout $
              onWorkspaces ["5:thunar"]                             thunarLayout $
              onWorkspaces ["4:IM"]                                     imLayout $
@@ -369,9 +369,9 @@ main = do
       -- hooks, layouts
         layoutHook         = myLayout,
         manageHook         = myManageHook,
-        logHook            = dynamicLogWithPP $ xmobarPP
+        logHook            = dynamicLogWithPP xmobarPP
                                                   { ppOutput = hPutStrLn xmproc
                                                   , ppTitle = xmobarColor "green" "" . shorten 50
-                                                  },
+                                                  } >> updatePointer (Relative 0.5 0.5),
         startupHook        = myStartupHook
     }
