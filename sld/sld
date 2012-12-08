@@ -27,14 +27,14 @@
 #    should go to the remote server. 
 
 # This is the remote server which has the git repo on
-export REMOTE_GIT_SERVER='123-dev2'
+export REMOTE_GIT_SERVER='my_remote_server'
 
 # Finally in the associative array, enter the keys as the local mount 
 # points with the values of the directory on $REMOTE_GIT_SERVER
 declare -A GIT_MOUNT_POINTS=( 
-    ["/new"]="/home/lharwood/new/src" 
-    ["/legacy"]="/home/lharwood/legacy" 
-    ["/test"]="/home/lharwood/test_scripts" 
+    ["/mnt/new_checkout"]="/home/untaken/new_checkout" 
+    ["/mnt/legacy_checkout"]="/home/untaken/legacy_checkout" 
+    ["/test_scripts"]="/home/untaken/test_scripts" 
 )
 export GIT_MOUNT_POINTS
 
