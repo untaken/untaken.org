@@ -6,8 +6,9 @@
 #
 # This software is free and is OpenSource, so feel free to do
 # whatever you like with it. Make sure you update the blog post
-# on <HREF> if you do :) Also check out the post for more 
-# information on what this is and how it can be useful.
+# on http://www.untaken.org/ssh-local-development-using-sshfs/
+# if you do :) Also check out the post for more information on 
+# what this is and how it can be useful.
 #
 # Install Instructions
 # --------------------
@@ -27,7 +28,7 @@
 #    should go to the remote server. 
 
 # This is the remote server which has the git repo on
-export REMOTE_GIT_SERVER='123-dev2'
+export REMOTE_GIT_SERVER='remote_server_name'
 
 # Finally in the associative array, enter the keys as the local mount 
 # points with the values of the directory on $REMOTE_GIT_SERVER
