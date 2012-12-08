@@ -27,14 +27,14 @@
 #    should go to the remote server. 
 
 # This is the remote server which has the git repo on
-export REMOTE_GIT_SERVER='my_remote_server'
+export REMOTE_GIT_SERVER='123-dev2'
 
 # Finally in the associative array, enter the keys as the local mount 
 # points with the values of the directory on $REMOTE_GIT_SERVER
-declare -A GIT_MOUNT_POINTS=( 
-    ["/mnt/new_checkout"]="/home/untaken/new_checkout" 
-    ["/mnt/legacy_checkout"]="/home/untaken/legacy_checkout" 
-    ["/test_scripts"]="/home/untaken/test_scripts" 
+declare -A GIT_MOUNT_POINTS=(
+    ["/mnt/new_checkout"]="/home/untaken/new_checkout"
+    ["/mnt/legacy_checkout"]="/home/untaken/legacy_checkout"
+    ["/test_scripts"]="/home/untaken/test_scripts"
 )
 export GIT_MOUNT_POINTS
 
@@ -99,8 +99,7 @@ function perl { call_server $FUNCNAME "$@"; }
 function ack { call_server $FUNCNAME "$@"; } 
 function git { call_server $FUNCNAME "$@"; }
 function find { call_server $FUNCNAME "$@"; }
-function restart_catalyst { call_server restart_catalyst; }
-function restart_apache { call_server restart_apache; }
-function error_log { call_server "tail -f ~/new/tmp/client-error_log"; }
-function access_log { call_server "tail -f ~/new/tmp/client-access_log"; }
-function messages_tail { call_server "tail -f /var/log/messages | grep USER:lharwood --line-buffered | sed 's/\\\n/\n/g'"; }
+function restart_apache { call_server "/etc/init.d/httpd graceful" }
+function error_log { call_server "tail -f /var/log/httpd/error_log"; }
+function access_log { call_server "tail -f /var/log/httpd/access_log"; }
+function messages_tail { call_server "tail -f /var/log/messages"; }
