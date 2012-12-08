@@ -1,0 +1,106 @@
+#!/bin/bash
+
+# sld - SSH Local Development
+#
+# Copyright (c) 2012 - Luke Harwood, http://www.untaken.org
+#
+# This software is free and is OpenSource, so feel free to do
+# whatever you like with it. Make sure you update the blog post
+# on <HREF> if you do :) Also check out the post for more 
+# information on what this is and how it can be useful.
+#
+# Install Instructions
+# --------------------
+#
+# 1. Setup some SSHFS mount points to the servers where you have
+#    git repositories setup.
+#
+# 2. Install the script to ~/bin/ and then configure the variables 
+#    below to your needs
+#
+# 3. Add the following line to your .bashrc file:
+#
+#    [[ -s "$HOME/bin/sld" ]] && source "$HOME/bin/sld"
+#
+# 4. Try it out. cd to a sshfs local directory and when you
+#    execute either ack, prove, perl, git or find, the requests
+#    should go to the remote server. 
+
+# This is the remote server which has the git repo on
+export REMOTE_GIT_SERVER='123-dev2'
+
+# Finally in the associative array, enter the keys as the local mount 
+# points with the values of the directory on $REMOTE_GIT_SERVER
+declare -A GIT_MOUNT_POINTS=( 
+    ["/new"]="/home/lharwood/new/src" 
+    ["/legacy"]="/home/lharwood/legacy" 
+    ["/test"]="/home/lharwood/test_scripts" 
+)
+export GIT_MOUNT_POINTS
+
+function get_mount_point()
+{
+    for i in "${!GIT_MOUNT_POINTS[@]}"
+    do 
+        if [[ $(pwd) =~ $i ]]; then
+            echo $i
+        fi  
+    done
+}   
+
+function get_git_checkout()
+{
+    current_mount=$(get_mount_point);
+    if [ -z "$current_mount" ]; then
+        return
+    fi 
+
+    for mount in "${!GIT_MOUNT_POINTS[@]}"
+    do 
+        if [ "$current_mount" == "$mount" ]; then
+            /usr/bin/cut -f3 -'d/' $mount/.git/HEAD 2> /dev/null
+        fi
+    done
+}
+
+function call_server {
+
+    current_mount=$(get_mount_point);
+
+    if [ -z "$current_mount" ]; then
+        /usr/bin/"$@"
+    else
+        ssh -tq $REMOTE_GIT_SERVER "cd ${GIT_MOUNT_POINTS["$current_mount"]}; $(quotecommand "$@")" 
+    fi
+}
+
+function quotecommand {
+    pattern=" |'"
+    finalargs=""
+
+    myarray=("$@")
+
+    for arg in "${myarray[@]}"
+    do
+        if [[ "$arg"  =~ $pattern ]] 
+        then
+            finalargs="$finalargs \"$arg\""
+        else
+            finalargs="$finalargs $arg"
+        fi
+    done
+   
+    echo "$finalargs"
+}
+
+
+function prove { call_server $FUNCNAME "$@" ; }
+function perl { call_server $FUNCNAME "$@"; }
+function ack { call_server $FUNCNAME "$@"; } 
+function git { call_server $FUNCNAME "$@"; }
+function find { call_server $FUNCNAME "$@"; }
+function restart_catalyst { call_server restart_catalyst; }
+function restart_apache { call_server restart_apache; }
+function error_log { call_server "tail -f ~/new/tmp/client-error_log"; }
+function access_log { call_server "tail -f ~/new/tmp/client-access_log"; }
+function messages_tail { call_server "tail -f /var/log/messages | grep USER:lharwood --line-buffered | sed 's/\\\n/\n/g'"; }
