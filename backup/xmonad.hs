@@ -62,12 +62,13 @@ myModMask       = mod1Mask
 --
 -- A tagging example:
 --
-myWorkspaces    = ["1:tmux","2:tmux","3:web","4:IM","5:thunar","6:email","7:spotify"]
+myWorkspaces    = ["1:tmux","2:tmux","3:web","4:IM","5:thunar","6:email","7:spotify","8:vbox"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
+
 -- }}}
 
 -- Key bindings. Add, modify or remove key bindings here. {{{
@@ -88,7 +89,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 --    , ((0, xK_Menu      ), windows $ viewOnScreen 0 "4:IM" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "4:IM" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Menu      ), windows $ viewOnScreen 0 "5:thunar" . viewOnScreen 1 "6:email")
-    , ((modm, xK_Control_R      ), windows $ viewOnScreen 0 "7:spotify" . viewOnScreen 1 "1:tmux")
+    , ((modm, xK_Control_R      ), windows $ viewOnScreen 0 "7:spotify" . viewOnScreen 1 "8:vbox")
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
@@ -141,6 +142,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
+    , ((modm .|. shiftMask, xK_Delete), spawn "gksudo '/usr/lib/indicator-session/gtk-logout-helper --shutdown'")
+
     -- Restart xmonad
     , ((modm              , xK_q     ), restart "xmonad" True)
 
@@ -154,7 +157,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_Left),  shiftPrevScreen)
     , ((modm,               xK_z),     toggleWS)
 
-    , ((modm, xK_c),    spawn "tmux show-buffer | xclip -i -selection clipboard")
+    , ((modm, xK_c),    spawn "tmux show-buffer | perl -pe 'chomp if eof' | xclip")
 
     , ((modm, xK_v),    spawn "tmux set-buffer -- \"$(xclip -o -selection clipboard)\"; tmux paste-buffer")
     , ((modm .|. shiftMask, xK_l),    spawn "xscreensaver-command -lock")
@@ -235,7 +238,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 --     -- Percent of screen to increment by when resizing panes
 --     delta   = 3/100
 myLayout  =  spacing 7                                                          $
-             onWorkspaces ["1:tmux", "7:spotify" ]                    allLayout $
+             onWorkspaces ["1:tmux", "7:spotify", "8:vbox" ]          allLayout $
              onWorkspaces ["2:tmux", "3:web", "6:email"]             tallLayout $
              onWorkspaces ["5:thunar"]                             thunarLayout $
              onWorkspaces ["4:IM"]                                     imLayout $
@@ -258,6 +261,7 @@ imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz
     skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm")) `And` (Not (Role "ConversationsWindow"))
 
 thunarLayout = withIM (1%3) (ClassName "Thunar") Grid ||| Full
+vboxlayout =  avoidStruts $ Full
 
 -- }}}
 
@@ -294,6 +298,7 @@ myManageHook = (composeAll . concat $
     , [className    =? c          --> doShift  "7:spotify" |   c   <- myMusic  ]     -- move music to music
     , [className    =?           "Orage" --> doFloatAt (1/1680) (1-176/1050) ]
     , [className    =?           "Thunderbird" --> doShift "6:email" ]
+    , [className    =?           "VirtualBox" --> doShift "8:vbox" ]
     , [className    =? "Pidgin" <&&> title =? "Buddy List" --> doShift "6:email"]
     , [className    =? c          --> doCenterFloat | c <- myFloats ]
     ])
@@ -302,7 +307,7 @@ myManageHook = (composeAll . concat $
         role      = stringProperty "WM_WINDOW_ROLE"
         name      = stringProperty "WM_NAME"
         -- classnames
-        myFloats  = ["Smplayer","MPlayer","VirtualBox","Xmessage","XFontSel","Downloads","Nm-connection-editor","Eog","eog", "Galculator" ]
+        myFloats  = ["Smplayer","MPlayer","Xmessage","VirtualBox","XFontSel","Downloads","Nm-connection-editor","Eog","eog", "Galculator" ]
         myWebs    = ["Firefox","Google-chrome","Chromium", "Chromium-browser","chromium-browser"]
         myMusic   = ["Rhythmbox","Spotify"]
         myChat    = ["Pidgin", "Psi", "Psi+", "chat", "psi", "Skype"]
@@ -319,7 +324,7 @@ myManageHook = (composeAll . concat $
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = True
+myFocusFollowsMouse = False
 -- }}}
 
 ------------------------------------------------------------------------
@@ -371,7 +376,7 @@ main = do
         manageHook         = myManageHook,
         logHook            = dynamicLogWithPP xmobarPP
                                                   { ppOutput = hPutStrLn xmproc
-                                                  , ppTitle = xmobarColor "green" "" . shorten 50
+                                                  , ppTitle = xmobarColor "#5fd7d7" "" . shorten 50
                                                   } >> updatePointer (Relative 0.5 0.5),
         startupHook        = myStartupHook
     }
