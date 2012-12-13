@@ -156,6 +156,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_Right), shiftNextScreen)
     , ((modm .|. shiftMask, xK_Left),  shiftPrevScreen)
     , ((modm,               xK_z),     toggleWS)
+    , ((modm,               xK_Alt_R),     swapNextScreen)
 
     , ((modm, xK_c),    spawn "tmux show-buffer | perl -pe 'chomp if eof' | xclip")
 
