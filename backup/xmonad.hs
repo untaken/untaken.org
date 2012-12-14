@@ -41,7 +41,6 @@ import Data.Ratio ((%))
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
--- myTerminal      = "urxvt +bc +uc -cr Green"
 myTerminal      = "urxvtc +bc +uc -cr Green"
 
 -- Width of the window border in pixels.
@@ -86,7 +85,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xK_Super_L      ), kill)
     , ((0, xK_Alt_R      ), windows $ viewOnScreen 0 "2:tmux" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Super_R      ), windows $ viewOnScreen 0 "3:web" . viewOnScreen 1 "1:tmux")
---    , ((0, xK_Menu      ), windows $ viewOnScreen 0 "4:IM" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "4:IM" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Menu      ), windows $ viewOnScreen 0 "5:thunar" . viewOnScreen 1 "6:email")
     , ((modm, xK_Control_R      ), windows $ viewOnScreen 0 "7:spotify" . viewOnScreen 1 "8:vbox")
@@ -217,27 +215,6 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 -- Layouts {{{
 
--- You can specify and transform your layouts by modifying these values.xmproc
--- If you change layout bindings be sure to use 'mod-shift-space' after
--- restarting (with 'mod-q') to reset your layout state to the new
--- defaults, as xmonad preserves your old layout settings by default.
---
--- The available layouts.  Note that each layout is separated by |||,
--- which denotes layout choice.
---
---myLayout = avoidStruts $ tiled ||| Mirror tiled ||| Full
---  where
---     -- default tiling algorithm partitions the screen into two panes
---     tiled   = Tall nmaster delta ratio
---
---     -- The default number of windows in the master pane
---     nmaster = 1
---
---     -- Default proportion of screen occupied by master pane
---     ratio   = 1/2
---
---     -- Percent of screen to increment by when resizing panes
---     delta   = 3/100
 myLayout  =  spacing 7                                                          $
              onWorkspaces ["1:tmux", "7:spotify", "8:vbox" ]          allLayout $
              onWorkspaces ["2:tmux", "3:web", "6:email"]             tallLayout $
@@ -245,11 +222,11 @@ myLayout  =  spacing 7                                                          
              onWorkspaces ["4:IM"]                                     imLayout $
              allLayout
 -- Layout
-tallLayout = avoidStruts $ Full ||| tiled --- ||| simpleFloat
+tallLayout = avoidStruts $ Full ||| tiled 
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
 
-allLayout = avoidStruts $ Full ||| tiled ||| Mirror tiled --- ||| simpleFloat
+allLayout = avoidStruts $ Full ||| tiled ||| Mirror tiled
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
 
@@ -268,35 +245,16 @@ vboxlayout =  avoidStruts $ Full
 
 -- Window rules; Shifting them to correct place {{{
 
--- Execute arbitrary actions and WindowSet manipulations when managing
--- a new window. You can use this to, for example, always float a
--- particular program, or have a client always appear on a particular
--- workspace.
---
--- To find the property name associated with a program, use
--- > xprop | grep WM_CLASS
--- and click on the client you're interested in.
---
--- To match on the WM_NAME, you can use 'title' in the same way that
--- 'className' and 'resource' are used below.
---
---myManageHook = composeAll
---    [ className =? "MPlayer"        --> doFloat
---    , className =? "Gimp"           --> doFloat
---    , resource  =? "desktop_window" --> doIgnore
---    , resource  =? "stalonetray" --> doIgnore
---    , resource  =? "kdesktop"       --> doIgnore ]
 myManageHook = (composeAll . concat $
     [ [resource     =? r          --> doIgnore             |   r   <- myIgnores]
-      -- ignore desktop
     , [title        =? "Tmux1"    --> doShift  "1:tmux"]
+    , [appName      =? "Firebug"  --> doShift  "1:tmux"]
     , [title        =? "Tmux2"    --> doShift  "2:tmux"] 
-    , [className    =? c          --> doShift  "3:web"     |   c   <- myWebs   ]     -- move webs to main
+    , [className    =? c          --> doShift  "3:web"     |   c   <- myWebs   ]
     , [className    =? c          --> doShift  "4:IM"      |   c   <- myChat   ]
     , [title        =? "IRC"      --> doShift "4:IM"]
-      -- move chat to chat
-    , [className    =? c          --> doShift  "5:thunar"  |   c   <- myThunar ]     -- move img to div
-    , [className    =? c          --> doShift  "7:spotify" |   c   <- myMusic  ]     -- move music to music
+    , [className    =? c          --> doShift  "5:thunar"  |   c   <- myThunar ]
+    , [className    =? c          --> doShift  "7:spotify" |   c   <- myMusic  ]
     , [className    =?           "Orage" --> doFloatAt (1/1680) (1-176/1050) ]
     , [className    =?           "Thunderbird" --> doShift "6:email" ]
     , [className    =?           "VirtualBox" --> doShift "8:vbox" ]
@@ -313,32 +271,14 @@ myManageHook = (composeAll . concat $
         myMusic   = ["Rhythmbox","Spotify"]
         myChat    = ["Pidgin", "Psi", "Psi+", "chat", "psi", "Skype"]
         myThunar  = ["Thunar","Gedit"]
-        myTmx1    = ["Tmux1","Firebug"]
-        myTmx2    = ["Tmux2"]
 
         -- resources
         myIgnores = ["desktop","desktop_window","notify-osd","stalonetray","trayer","xfce4-notifyd"]
-
-        -- names
-        myNames   = ["bashrun","Google Chrome Options","Chromium Options"]
-
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = False
 -- }}}
-
-------------------------------------------------------------------------
--- Status bars and logging
-
--- Perform an arbitrary action on each internal state change or X event.
--- See the 'DynamicLog' extension for examples.
---
--- To emulate dwm's status bar
---
--- > logHook = dynamicLogDzen
---
--- myLogHook = return ()
 
 ------------------------------------------------------------------------
 -- Startup hook
