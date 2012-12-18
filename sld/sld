@@ -81,16 +81,22 @@ function quotecommand {
 
     myarray=("$@")
 
-    for arg in "${myarray[@]}"
-    do
-        if [[ "$arg"  =~ $pattern ]] 
-        then
-            finalargs="$finalargs \"$arg\""
-        else
-            finalargs="$finalargs $arg"
-        fi
-    done
-   
+    # If were calling call_server() directly at bottom of sld
+    if [ ${#myarray[@]} == 1 ]; then
+        finalargs=$@
+    # The arguments have come from command line
+    else
+        for arg in "${myarray[@]}"
+        do
+            if [[ "$arg"  =~ $pattern ]]
+            then
+                finalargs="$finalargs \"$arg\""
+            else
+                finalargs="$finalargs $arg"
+            fi
+        done
+    fi
+
     echo "$finalargs"
 }
 
