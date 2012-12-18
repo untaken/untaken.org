@@ -71,7 +71,7 @@ function call_server {
     if [ -z "$current_mount" ]; then
         /usr/bin/"$@"
     else
-        ssh -tq $REMOTE_GIT_SERVER "cd ${GIT_MOUNT_POINTS["$current_mount"]}; eval $(quotecommand "$@")" 
+        ssh -tq $REMOTE_GIT_SERVER "cd ${GIT_MOUNT_POINTS["$current_mount"]}; $(quotecommand "$@")" 
     fi
 }
 
