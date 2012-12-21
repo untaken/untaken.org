@@ -83,6 +83,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
     , ((0, xK_Super_L      ), kill)
+
+    , ((modm, xK_Super_L ), spawn "xmenud.py")
+
     , ((0, xK_Alt_R      ), windows $ viewOnScreen 0 "2:tmux" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Super_R      ), windows $ viewOnScreen 0 "3:web" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "4:IM" . viewOnScreen 1 "1:tmux")
@@ -249,6 +252,7 @@ myManageHook = (composeAll . concat $
     [ [resource     =? r          --> doIgnore             |   r   <- myIgnores]
     , [title        =? "Tmux1"    --> doShift  "1:tmux"]
     , [appName      =? "Firebug"  --> doShift  "1:tmux"]
+    , [appName      =? "Global"    --> doShift  "1:tmux"]
     , [title        =? "Tmux2"    --> doShift  "2:tmux"] 
     , [className    =? c          --> doShift  "3:web"     |   c   <- myWebs   ]
     , [className    =? c          --> doShift  "4:IM"      |   c   <- myChat   ]
