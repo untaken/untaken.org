@@ -18,7 +18,6 @@ fi
 
 
 orage &
-autokey &
 
 xmodmap -e "keycode 108 = Alt_R"
 
@@ -34,6 +33,7 @@ pidgin &
 (sleep 15 && thunar) &
 #(sleep 20 && skype) &
 (sleep 30 && spotify) &
+(sleep 60 && autokey) &
 
 # time to start, the master - the window manager xmonad
 exec ck-launch-session xmonad 
