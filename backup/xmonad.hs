@@ -241,7 +241,7 @@ imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz
     pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
     skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm")) `And` (Not (Role "ConversationsWindow"))
 
-thunarLayout = withIM (1%3) (ClassName "Thunar") Grid ||| Full
+thunarLayout = avoidStruts $ withIM (1%3) (ClassName "Thunar") Grid ||| Full
 vboxlayout =  avoidStruts $ Full
 
 -- }}}
