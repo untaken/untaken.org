@@ -2,7 +2,7 @@ xrdb <$HOME/.Xdefaults
 feh --bg-scale /usr/share/backgrounds/warty-final-ubuntu.png
 
 # system tray
-stalonetray -bg "#003366" -i 1 --geometry 7x1-1367+1 --max-geometry 7x1-1367+1 --icon-gravity E  --sticky --skip-taskbar --window-strut top &
+trayer --edge top --align right --widthtype pixel --width 120 --SetDockType true --SetPartialStrut true --transparent true --alpha 0 --tint 0x303030 --expand true --heighttype pixel --height 16 &
 $HOME/bin/start_irssi.pl
 
 # Start apps
