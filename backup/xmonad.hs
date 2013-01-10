@@ -233,7 +233,7 @@ allLayout = avoidStruts $ Full ||| tiled ||| Mirror tiled
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
 
-imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (Full ||| Grid)
+imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (Full ||| (Mirror Grid))
   where
     chatLayout      = Grid
     ratio           = (1%8)
@@ -241,7 +241,7 @@ imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz
     pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
     skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm")) `And` (Not (Role "ConversationsWindow"))
 
-thunarLayout = withIM (1%3) (ClassName "Thunar") Grid ||| Full
+thunarLayout = withIM (1%3) (ClassName "Thunar") (Grid) ||| Full ||| withIM (1%10) (ClassName "Thunar") (Mirror Grid)
 vboxlayout =  avoidStruts $ Full
 
 -- }}}
