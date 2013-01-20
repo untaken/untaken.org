@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Simply call script with video files/s you want to change and it will 
+# execute ffmpeg to encode it to a XVID avi file with mp3 audio:
+#
+# ./convert_video.sh file.mkv
+# 
+# HREF
+
 for file in "$@"
 do
 
