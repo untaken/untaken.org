@@ -5,7 +5,8 @@
 #
 # ./convert_video.sh file.mkv
 # 
-# HREF
+# More information can be found on:
+# http://www.untaken.org/script-to-encode-video-into-a-xvidmp3-format/
 
 for file in "$@"
 do
