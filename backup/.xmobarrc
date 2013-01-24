@@ -12,5 +12,5 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-12-*-*-*-*-*-*-*"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %eth0% %cpu% %memory% %swap% <fc=#5fd7d7>%date%</fc> %EGPF%                 "
+       , template = "%StdinReader% }{ %eth0% %cpu% %memory% %swap% <fc=#5fd7d7>%date%</fc> %EGPF%                   "
        }
