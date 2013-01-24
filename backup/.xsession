@@ -1,3 +1,4 @@
+
 if [ -e ~/.screenlayout/layout.sh ] ; then
     ~/.screenlayout/work.sh
 fi
@@ -37,6 +38,8 @@ pidgin &
 #(sleep 20 && skype) &
 (sleep 30 && spotify) &
 (sleep 60 && autokey) &
+
+gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
 
 # time to start, the master - the window manager xmonad
 exec ck-launch-session xmonad 
