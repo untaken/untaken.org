@@ -10,7 +10,6 @@ import XMonad.Actions.SpawnOn
 import XMonad.Util.Paste
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.OnScreen
-import XMonad.Actions.UpdatePointer
 
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
@@ -241,7 +240,7 @@ imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz
     pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
     skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm")) `And` (Not (Role "ConversationsWindow"))
 
-thunarLayout = avoidStruts $ withIM (1%3) (ClassName "Thunar") Grid ||| Full ||| withIM (1%14) (ClassName "Thunar") (Mirror Grid)
+thunarLayout = avoidStruts $ withIM (1%3) (ClassName "Thunar") Grid ||| Full ||| withIM (1%15) (ClassName "Thunar") (Mirror Grid)
 vboxlayout =  avoidStruts $ Full
 
 -- }}}
@@ -322,6 +321,6 @@ main = do
         logHook            = dynamicLogWithPP xmobarPP
                                                   { ppOutput = hPutStrLn xmproc
                                                   , ppTitle = xmobarColor "#5fd7d7" "" . shorten 50
-                                                  } >> updatePointer (Relative 0.5 0.5),
+                                                  },
         startupHook        = myStartupHook
     }
