@@ -1,3 +1,7 @@
+if [ -e ~/.screenlayout/layout.sh ] ; then
+    ~/.screenlayout/work.sh
+fi
+
 xrdb <$HOME/.Xdefaults
 feh --bg-scale /usr/share/backgrounds/warty-final-ubuntu.png
 
@@ -16,7 +20,6 @@ if [ -x /usr/bin/nm-applet ] ; then
    nm-applet --sm-disable &
 fi
 
-
 orage &
 
 xmodmap -e "keycode 108 = Alt_R"
@@ -26,10 +29,10 @@ urxvtd &
 pidgin &
 
 # Delayed applications
+(sleep 1 && urxvtc +bc +uc -cr Green -name Tmux1 -title Tmux1 -e sh -c "tmx 1") &
+(sleep 2 && urxvtc +bc +uc -cr Green -name Tmux2 -title Tmux2 -e sh -c "tmx 2") &
+(sleep 3 && urxvtc +bc +uc -cr Green -name IRC -title IRC -e sh -c "screen -r") &
 (sleep 8 && chromium-browser) &
-(sleep 10 && urxvtc +bc +uc -cr Green -name Tmux1 -title Tmux1 -e sh -c "tmx 1") &
-(sleep 12 && urxvtc +bc +uc -cr Green -name Tmux2 -title Tmux2 -e sh -c "tmx 2") &
-(sleep 10 && urxvtc +bc +uc -cr Green -name IRC -title IRC -e sh -c "screen -r") &
 (sleep 15 && thunar) &
 #(sleep 20 && skype) &
 (sleep 30 && spotify) &
