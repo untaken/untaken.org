@@ -60,7 +60,7 @@ myModMask       = mod1Mask
 --
 -- A tagging example:
 --
-myWorkspaces    = ["1:tmux","2:tmux","3:web","4:IM","5:thunar","6:email","7:spotify","8:vbox"]
+myWorkspaces    = ["1:tmux","2:tmux","3:web","4:thunar","5:email","6:spotify","7:vbox"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -87,9 +87,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     , ((0, xK_Alt_R      ), windows $ viewOnScreen 0 "2:tmux" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Super_R      ), windows $ viewOnScreen 0 "3:web" . viewOnScreen 1 "1:tmux")
-    , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "4:IM" . viewOnScreen 1 "1:tmux")
-    , ((0, xK_Menu      ), windows $ viewOnScreen 0 "5:thunar" . viewOnScreen 1 "6:email")
-    , ((modm, xK_Control_R      ), windows $ viewOnScreen 0 "7:spotify" . viewOnScreen 1 "8:vbox")
+    , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "4:thunar" . viewOnScreen 1 "1:tmux")
+    , ((0, xK_Menu      ), windows $ viewOnScreen 0 "4:thunar" . viewOnScreen 1 "5:email")
+    , ((modm, xK_Control_R      ), windows $ viewOnScreen 0 "6:spotify" . viewOnScreen 1 "7:vbox")
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
@@ -218,10 +218,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Layouts {{{
 
 myLayout  =  spacing 7                                                          $
-             onWorkspaces ["1:tmux", "7:spotify", "8:vbox" ]          allLayout $
-             onWorkspaces ["2:tmux", "3:web", "6:email"]             tallLayout $
-             onWorkspaces ["5:thunar"]                             thunarLayout $
-             onWorkspaces ["4:IM"]                                     imLayout $
+             onWorkspaces ["1:tmux", "6:spotify", "7:vbox" ]          allLayout $
+             onWorkspaces ["2:tmux", "3:web", "5:email"]             tallLayout $
+             onWorkspaces ["4:thunar"]                             thunarLayout $
              allLayout
 -- Layout
 tallLayout = avoidStruts $ Full ||| tiled 
@@ -232,7 +231,7 @@ allLayout = avoidStruts $ Full ||| tiled ||| Mirror tiled
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
 
-imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (Full ||| (Mirror Grid))
+thunarLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ withIM (1%3) (ClassName "Thunar") Grid ||| Full ||| withIM (1%15) (ClassName "Thunar") (Mirror Grid)
   where
     chatLayout      = Grid
     ratio           = (1%8)
@@ -240,7 +239,6 @@ imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz
     pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
     skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm")) `And` (Not (Role "ConversationsWindow"))
 
-thunarLayout = avoidStruts $ withIM (1%3) (ClassName "Thunar") Grid ||| Full ||| withIM (1%15) (ClassName "Thunar") (Mirror Grid)
 vboxlayout =  avoidStruts $ Full
 
 -- }}}
@@ -254,14 +252,13 @@ myManageHook = (composeAll . concat $
     , [appName      =? "Global"    --> doShift  "1:tmux"]
     , [title        =? "Tmux2"    --> doShift  "2:tmux"] 
     , [className    =? c          --> doShift  "3:web"     |   c   <- myWebs   ]
-    , [className    =? c          --> doShift  "4:IM"      |   c   <- myChat   ]
-    , [title        =? "IRC"      --> doShift "4:IM"]
-    , [className    =? c          --> doShift  "5:thunar"  |   c   <- myThunar ]
-    , [className    =? c          --> doShift  "7:spotify" |   c   <- myMusic  ]
+    , [className    =? c          --> doShift  "4:thunar"      |   c   <- myChat   ]
+    , [className    =? c          --> doShift  "4:thunar"  |   c   <- myThunar ]
+    , [className    =? c          --> doShift  "6:spotify" |   c   <- myMusic  ]
     , [className    =?           "Orage" --> doFloatAt (1/1680) (1-176/1050) ]
-    , [className    =?           "Thunderbird" --> doShift "6:email" ]
-    , [className    =?           "VirtualBox" --> doShift "8:vbox" ]
-    , [className    =? "Pidgin" <&&> title =? "Buddy List" --> doShift "6:email"]
+    , [className    =?           "Thunderbird" --> doShift "5:email" ]
+    , [className    =?           "VirtualBox" --> doShift "7:vbox" ]
+    , [className    =? "Pidgin" <&&> title =? "Buddy List" --> doShift "5:email"]
     , [className    =? c          --> doCenterFloat | c <- myFloats ]
     ])
 
