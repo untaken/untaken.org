@@ -1,7 +1,7 @@
-URxvt.selection.pattern-0: \\│([^|]+)\\│
 URxvt.urlLauncher:      /usr/bin/firefox
 URxvt.matcher.button:   1
-URxvt.perl-ext-common:  default,matcher,selection,clipboard,resize-font,-tabbed
+URxvt.perl-ext-common:  default,matcher,selection,resize-font,-tabbed
+URxvt.selection.pattern-0: ([[:word:]]+)
 
 URxvt*urgentOnBell: true
 URxvt.iso14755: False
