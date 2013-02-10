@@ -10,7 +10,7 @@ ln -s ~/untaken/backup/xmonad.hs ~/.xmonad/xmonad.hs
 ln -s ~/untaken/backup/.xmobarrc ~/.xmobarrc
 ln -s ~/untaken/backup/.tmux.conf ~/.tmux.conf
 ln -s ~/untaken/backup/notifty-service.psgi ~/bin/notifty-service.psgi
-cp ~/untaken/backup/default.desktop /usr/share/xsessions/default.desktop
+sudo cp ~/untaken/backup/default.desktop /usr/share/xsessions/default.desktop
 mkdir ~/.fonts
 git clone https://gist.github.com/1634235.git ~/.fonts/
 fc-cache -vf
