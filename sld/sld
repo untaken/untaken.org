@@ -43,7 +43,7 @@ function get_mount_point()
 {
     for i in "${!GIT_MOUNT_POINTS[@]}"
     do 
-        if [[ $(pwd) =~ $i ]]; then
+        if [[ $i =~ ^$(pwd) ]]; then
             echo $i
         fi  
     done
