@@ -1,6 +1,6 @@
 URxvt.urlLauncher:      /usr/bin/firefox
 URxvt.matcher.button:   1
-URxvt.perl-ext-common:  default,matcher,selection,resize-font,-tabbed
+URxvt.perl-ext-common:  default,matcher,selection,-tabbed
 URxvt.selection.pattern-0: ([[:word:]]+)
 
 URxvt*urgentOnBell: true
@@ -33,12 +33,6 @@ URxvt*saveLines: 16000
 
 Urxvt*foreground: #f2f2f2
 Urxvt*background: #101010
-
-URxvt.resize-font.smaller: C-Down
-URxvt.resize-font.bigger: C-Up
-URxvt.resize-font.reset: C-S-Down
-URxvt.resize-font.show: C-S-Up
-
 
 ! COLOR PALETTE
 ! black
