@@ -1,4 +1,4 @@
-Config { font = "-*-Fixed-Bold-R-Normal-*-12-*-*-*-*-*-*-*"
+Config { font = "xft:Monaco for Powerline:regular:size=8.4:antialias=false"
        , bgColor = "#303030"
        , fgColor = "#00afd7"
        , position = TopW L 100 
