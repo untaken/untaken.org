@@ -29,6 +29,7 @@ import XMonad.Layout.LayoutHints
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.Grid
 import XMonad.Layout.ThreeColumns
+import XMonad.Util.Scratchpad
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -89,7 +90,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xK_Super_R      ), windows $ viewOnScreen 0 "3:web" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "4:thunar" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Menu      ), windows $ viewOnScreen 0 "4:thunar" . viewOnScreen 1 "5:email")
+    , ((modm, xK_Menu      ), windows $ viewOnScreen 0 "5:email" . viewOnScreen 1 "1:tmux")
     , ((modm, xK_Control_R      ), windows $ viewOnScreen 0 "6:spotify" . viewOnScreen 1 "7:vbox")
+
+    , ((modm , xK_Super_R ), scratchpadSpawnActionTerminal "urxvt")
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
@@ -231,7 +235,7 @@ allLayout = avoidStruts $ Full ||| tiled ||| Mirror tiled
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
 
-thunarLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ withIM (1%3) (ClassName "Thunar") Grid ||| Full ||| withIM (1%15) (ClassName "Thunar") (Mirror Grid)
+thunarLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ withIM (1%3) (ClassName "Thunar") (Grid) ||| Full ||| withIM (1%100) (ClassName "Thunar") (Grid)
   where
     chatLayout      = Grid
     ratio           = (1%8)
@@ -280,6 +284,19 @@ myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = False
 -- }}}
 
+--
+-- Scratchpad
+--
+manageScratchPad :: ManageHook
+manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
+
+  where
+
+    h = 0.4     -- terminal height, 10%
+    w = 1       -- terminal width, 100%
+    t = 1 - h   -- distance from top edge, 90%
+    l = 1 - w   -- distance from left edge, 0%
+
 ------------------------------------------------------------------------
 -- Startup hook
 
@@ -314,7 +331,7 @@ main = do
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = myManageHook <+> manageDocks,
+        manageHook         = myManageHook <+> manageScratchPad,
         logHook            = dynamicLogWithPP xmobarPP
                                                   { ppOutput = hPutStrLn xmproc
                                                   , ppTitle = xmobarColor "#5fd7d7" "" . shorten 50
