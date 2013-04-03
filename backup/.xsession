@@ -25,7 +25,7 @@ orage &
 
 xmodmap -e "keycode 108 = Alt_R"
 
-xcompmgr -cCf -r 0 -D 2 &
+xcompmgr -c &
 urxvtd &
 pidgin &
 
