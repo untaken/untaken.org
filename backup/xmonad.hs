@@ -331,7 +331,7 @@ main = do
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = myManageHook <+> manageScratchPad,
+        manageHook         = myManageHook <+> manageScratchPad <+> manageDocks,
         logHook            = dynamicLogWithPP xmobarPP
                                                   { ppOutput = hPutStrLn xmproc
                                                   , ppTitle = xmobarColor "#5fd7d7" "" . shorten 50
