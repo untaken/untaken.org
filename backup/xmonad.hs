@@ -165,7 +165,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_c),    spawn "tmux show-buffer | perl -pe 'chomp if eof' | xclip")
 
     , ((modm, xK_v),    spawn "tmux set-buffer -- \"$(xclip -o -selection clipboard)\"; tmux paste-buffer")
-    , ((modm .|. shiftMask, xK_l),    spawn "xscreensaver-command -lock")
+    -- , ((modm .|. shiftMask, xK_l),    spawn "xscreensaver-command -lock")
+    , ((modm .|. shiftMask, xK_l),    spawn "gnome-screensaver-command --lock")
     , ((0, xK_Pause),    spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
 
     , ((modm,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1, 1)))
