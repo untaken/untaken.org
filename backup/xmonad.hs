@@ -162,7 +162,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_z),     toggleWS)
     , ((modm,               xK_Alt_R),     swapNextScreen)
 
-    , ((modm, xK_c),    spawn "tmux show-buffer | perl -pe 'chomp if eof' | xclip")
+    , ((modm, xK_c),    spawn "tmux save-buffer - | xclip -i -selection clipboard")
 
     , ((modm, xK_v),    spawn "tmux set-buffer -- \"$(xclip -o -selection clipboard)\"; tmux paste-buffer")
     -- , ((modm .|. shiftMask, xK_l),    spawn "xscreensaver-command -lock")
