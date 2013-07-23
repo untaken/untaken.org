@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# find_ssh_remote_host - Locate your remote host from a known IP range using your previous SSH fingerprint
+#
+# Copyright (c) 2013 - Luke Harwood, http://www.untaken.org
+#
+# This software is free and is OpenSource, so feel free to do
+# whatever you like with it. Make sure you update the blog post
+# on http://www.untaken.org/[LINK]/
+# if you do :) Also check out the post for more information on 
+# what this is and how it can be useful.
+
+# Install Instructions
+# --------------------
+#
+# Simply configure the two below variables and run. Should show you your IP
+# on your host that you have stored locally in your .ssh/known_hosts file
+
+IP_RANGE='172.1.2.0/24'
+KEY_TYPE='ecdsa' # Either ecdsa, dsa, rsa or rsa1
+
+for ip in `nmap -p 22 --open $IP_RANGE|grep 'Nmap scan report for'|sed 's/Nmap scan report for //'`;
+do
+	key=`ssh-keyscan -t $KEY_TYPE $ip 2> /dev/null| grep -v '#' | cut -f3 '-d '`
+	
+	if [[ -z "$key" ]]; then
+		continue
+	fi
+
+	if [[ `grep "$key" .ssh/known_hosts` ]]; then
+		echo "My Host: $ip"
+	fi
+done
+
