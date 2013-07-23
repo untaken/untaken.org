@@ -1,5 +1,5 @@
 find_ssh_remote_host - Locate your remote host from a known IP range using your previous SSH fingerprint
-========================================================================================================
+--------------------------------------------------------------------------------------------------------
 
 Copyright (c) 2013 - Luke Harwood, http://www.untaken.org
 
