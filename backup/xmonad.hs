@@ -162,11 +162,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_z),     toggleWS)
     , ((modm,               xK_Alt_R),     swapNextScreen)
 
-    , ((modm, xK_c),    spawn "tmux show-buffer | perl -pe 'chomp if eof' | xclip")
+    , ((modm, xK_c),    spawn "tmux save-buffer - | xclip -i -selection clipboard")
 
     , ((modm, xK_v),    spawn "tmux set-buffer -- \"$(xclip -o -selection clipboard)\"; tmux paste-buffer")
-    , ((modm .|. shiftMask, xK_l),    spawn "xscreensaver-command -lock")
+    -- , ((modm .|. shiftMask, xK_l),    spawn "xscreensaver-command -lock")
+    , ((modm .|. shiftMask, xK_l),    spawn "gnome-screensaver-command --lock")
     , ((0, xK_Pause),    spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
+    , ((0 .|. shiftMask, xK_Print),    spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+    , ((0 .|. shiftMask, xK_Scroll_Lock),    spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
 
     , ((modm,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1, 1)))
     , ((modm,               xK_s     ), withFocused (keysResizeWindow (10,10) (1,1)))
