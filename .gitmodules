@@ -1,6 +1,3 @@
-[submodule "bundle/snipmate-snippets"]
-    path = bundle/snipmate-snippets
-    url = git://github.com/scrooloose/snipmate-snippets.git
 [submodule "backup/.vim/bundle/snipmate-snippets"]
 	path = backup/.vim/bundle/snipmate-snippets
 	url = git://github.com/scrooloose/snipmate-snippets.git
