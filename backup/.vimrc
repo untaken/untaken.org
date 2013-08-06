@@ -7,6 +7,7 @@ let perl_nofold_packages=1
 let perl_include_pod = 1
 let perl_extended_vars = 1
 
+silent !mkdir -p ~/tmp/.vim/files/info/ > /dev/null 2>&1
 set viminfo='100,<50,s10,h,n$HOME/tmp/.vim/files/info/viminfo
 set laststatus=2
 set notimeout
