@@ -1,11 +1,25 @@
 call pathogen#infect()
 call Pl#Theme#InsertSegment('pwd', 'after', 'filename')
 
+let g:Powerline_stl_path_style = 'full'
 let g:Powerline_symbols = 'fancy'
 let mapleader = ","
 let perl_nofold_packages=1
 let perl_include_pod = 1
 let perl_extended_vars = 1
+let g:startify_files_number = 20
+let g:startify_change_to_dir = 0 
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+" MiniBufExpl Colors
+hi MBEVisibleActive guifg=#A6DB29 guibg=fg
+hi MBEVisibleChangedActive guifg=#F1266F guibg=fg
+hi MBEVisibleChanged guifg=#F1266F guibg=fg
+hi MBEVisibleNormal guifg=#5DC2D6 guibg=fg
+hi MBEChanged guifg=#CD5907 guibg=fg
+hi MBENormal guifg=#808080 guibg=fg
 
 silent !mkdir -p ~/tmp/.vim/files/info/ > /dev/null 2>&1
 set viminfo='100,<50,s10,h,n$HOME/tmp/.vim/files/info/viminfo
@@ -41,6 +55,9 @@ autocmd InsertEnter * highlight  CursorLine ctermbg=4 ctermfg=White
 autocmd InsertLeave * set nocursorline
 autocmd InsertLeave * highlight  CursorLine ctermbg=Black ctermfg=None
 
+autocmd BufRead,BufNewFile *.tt set filetype=html
+autocmd FileType startify nnoremap <buffer> p :CtrlP<cr>
+
 map <Leader>b :MiniBufExplorer<cr>
 " Switch to buffer N with <Leader>N
 
@@ -59,7 +76,6 @@ map sh :sh<cr>
 map wc :!clear;perl -wc %<cr>
 map diff :!cd %:h && git diff %:t<cr>
 map com :!cd %:h && git pull && git commit %:t<cr>
-map perld :!perl -d %<cr>
 map rs :!restartapache<cr>
 map run :w<cr>:!perl %
 map rund :w<cr>:!perl -d %<cr>
