@@ -56,7 +56,7 @@ autocmd InsertLeave * set nocursorline
 autocmd InsertLeave * highlight  CursorLine ctermbg=Black ctermfg=None
 
 autocmd BufRead,BufNewFile *.tt set filetype=html
-autocmd FileType startify nnoremap <buffer> p :CtrlP<cr>
+autocmd FileType startify nnoremap <buffer> p :enew\|CtrlP<cr>
 
 map <Leader>b :MiniBufExplorer<cr>
 " Switch to buffer N with <Leader>N
