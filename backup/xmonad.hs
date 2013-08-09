@@ -273,7 +273,7 @@ myManageHook = (composeAll . concat $
         role      = stringProperty "WM_WINDOW_ROLE"
         name      = stringProperty "WM_NAME"
         -- classnames
-        myFloats  = ["Smplayer","MPlayer","Xmessage","VirtualBox","XFontSel","Downloads","Nm-connection-editor","Eog","eog", "Galculator" ]
+        myFloats  = ["Smplayer","MPlayer","Xmessage","VirtualBox","XFontSel","Downloads","Nm-connection-editor","Eog","eog", "Galculator","xpad" ]
         myWebs    = ["Firefox","Google-chrome","Chromium", "Chromium-browser","chromium-browser"]
         myMusic   = ["Rhythmbox","Spotify"]
         myChat    = ["Pidgin", "Psi", "Psi+", "chat", "psi", "Skype"]
