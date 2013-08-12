@@ -14,6 +14,7 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 let g:ctrlp_open_multiple_files = 'i'
+let g:gitgutter_enabled = 0
 " MiniBufExpl Colors
 hi MBEVisibleActive guifg=#A6DB29 guibg=fg
 hi MBEVisibleChangedActive guifg=#F1266F guibg=fg
@@ -87,7 +88,8 @@ nmap <C-Up> <C-Y>
 
 " F2 in visual mode : Paste toggle (setup above)
 " F3 in console mode: Line number toggle
-nnoremap <silent> <F3> :set nonumber!<cr>
+nnoremap <silent> <F3> :call GitGutterToggle()<CR>:set nonumber!<CR>
+"nnoremap <silent> <F3> :set nonumber!|GitGutterToggle
 " F4 in console mode: Gundo for locating code changes
 nnoremap <F4> :GundoToggle<CR>
 " F5 in console mode: Perltidy
