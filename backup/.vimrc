@@ -15,6 +15,8 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 let g:ctrlp_open_multiple_files = 'i'
 let g:gitgutter_enabled = 0
+let g:ackprg="ack --type-add perl=.tmpl --perl"
+let g:gitgutter_eager = 0
 " MiniBufExpl Colors
 hi MBEVisibleActive guifg=#A6DB29 guibg=fg
 hi MBEVisibleChangedActive guifg=#F1266F guibg=fg
