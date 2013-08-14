@@ -1,4 +1,5 @@
 call pathogen#infect()
+Helptags
 call Pl#Theme#InsertSegment('pwd', 'after', 'filename')
 
 let g:Powerline_stl_path_style = 'full'
