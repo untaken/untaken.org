@@ -35,12 +35,15 @@ set foldmethod=marker
 set background=dark
 set mouse=a
 set backspace=indent,eol,start
+set autoindent
+set copyindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
 set pastetoggle=<F2>
 set incsearch 
 set hidden " so I change buffers without writing
+set showmatch
 set wildmenu
 set wildmode=list:longest,full
 set complete=.,w,b,u,t
@@ -112,6 +115,12 @@ map <silent> <F10> :MBEToggle<CR>
 map <silent> <F11> :bp<CR>
 " F12 in console mode: next buffer
 map <silent> <F12> :bn<CR>
+
+" shortcusts for copying, mostly will be used in gvim
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <C-r><C-o>+
 
 " Perltidy F5 shortcut {{{
 "define :Tidy command to run perltidy on visual selection || entire buffer"
