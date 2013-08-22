@@ -65,8 +65,8 @@ autocmd InsertLeave * highlight  CursorLine ctermbg=Black ctermfg=None
 
 autocmd BufRead,BufNewFile *.tt set filetype=html
 autocmd FileType startify nnoremap <buffer> p :enew\|CtrlP<cr>
+autocmd FileType startify nnoremap <buffer> g :args `git status --porcelain \\| sed -ne 's/^ M //p'`<cr>
 
-map <Leader>b :MiniBufExplorer<cr>
 " Switch to buffer N with <Leader>N
 
 nnoremap <Leader>1 :buf 1<CR>
