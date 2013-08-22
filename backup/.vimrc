@@ -15,8 +15,9 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 let g:ctrlp_open_multiple_files = 'i'
-let g:gitgutter_enabled = 0
-let g:gitgutter_eager = 0
+"let g:gitgutter_enabled = 0
+"let g:gitgutter_eager = 0
+let g:LustyJugglerDefaultMappings = 0
 " MiniBufExpl Colors
 hi MBEVisibleActive guifg=#A6DB29 guibg=fg
 hi MBEVisibleChangedActive guifg=#F1266F guibg=fg
@@ -93,7 +94,9 @@ nmap <C-Up> <C-Y>
 
 " F2 in visual mode : Paste toggle (setup above)
 " F3 in console mode: Line number toggle
-nnoremap <silent> <F3> :call GitGutterToggle()<CR>:set nonumber!<CR>
+" nnoremap <silent> <F3> :call GitGutterToggle()<CR>:set nonumber!<CR>
+nnoremap <silent> <F3> :set nonumber!<CR>
+nnoremap <silent> <Leader><F3> :call GitGutterToggle()<CR>
 "nnoremap <silent> <F3> :set nonumber!|GitGutterToggle
 " F4 in console mode: Gundo for locating code changes
 nnoremap <F4> :GundoToggle<CR>
@@ -121,6 +124,12 @@ vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
+
+" disabling arrows keys so I get used to hjkl
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
 " Perltidy F5 shortcut {{{
 "define :Tidy command to run perltidy on visual selection || entire buffer"
