@@ -40,3 +40,12 @@
 [submodule "backup/.vim/bundle/vim-gitgutter"]
 	path = backup/.vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "backup/.vim/bundle/LustyJuggler"]
+	path = backup/.vim/bundle/LustyJuggler
+	url = https://github.com/vim-scripts/LustyJuggler.git
+[submodule "backup/.vim/bundle/textobj-word-column"]
+	path = backup/.vim/bundle/textobj-word-column
+	url = https://github.com/coderifous/textobj-word-column.vim.git
+[submodule "backup/.vim/bundle/vim-surround"]
+	path = backup/.vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
