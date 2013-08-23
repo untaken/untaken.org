@@ -15,8 +15,6 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 let g:ctrlp_open_multiple_files = 'i'
-"let g:gitgutter_enabled = 0
-"let g:gitgutter_eager = 0
 let g:LustyJugglerDefaultMappings = 0
 " MiniBufExpl Colors
 hi MBEVisibleActive guifg=#A6DB29 guibg=fg
