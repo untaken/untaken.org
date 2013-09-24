@@ -15,7 +15,6 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 let g:ctrlp_open_multiple_files = 'i'
-let g:LustyJugglerDefaultMappings = 0
 " MiniBufExpl Colors
 hi MBEVisibleActive guifg=#A6DB29 guibg=fg
 hi MBEVisibleChangedActive guifg=#F1266F guibg=fg
@@ -31,7 +30,6 @@ set notimeout
 set ttimeout
 set timeoutlen=50
 set foldmethod=marker
-set background=dark
 set mouse=a
 set backspace=indent,eol,start
 set autoindent
@@ -50,6 +48,11 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 filetype plugin indent on
 syntax on
+let g:solarized_termcolors = '256'
+set background=light
+colorscheme solarized
+hi! link SignColumn LineNr " Git gutter same color as linenumber
+
 au BufRead,BufNewFile *.t set filetype=perl
 
 
