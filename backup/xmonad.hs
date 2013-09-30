@@ -82,8 +82,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
-    , ((0, xK_Super_L      ), kill)
-
+    , ((0, xK_Super_L      ), spawn "~/bin/restart_services.sh 2> /dev/null")
+    , ((modm, xK_Escape      ), kill)
     , ((modm, xK_Super_L ), spawn "xmenud.py")
 
     , ((0, xK_Alt_R      ), windows $ viewOnScreen 0 "2:tmux" . viewOnScreen 1 "1:tmux")
