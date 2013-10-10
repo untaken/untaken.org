@@ -8,8 +8,9 @@ let mapleader = ","
 let perl_nofold_packages=1
 let perl_include_pod = 1
 let perl_extended_vars = 1
-let g:startify_files_number = 20
+let g:startify_files_number = 25 
 let g:startify_change_to_dir = 0 
+let g:startify_bookmarks = [ '~/.vimrc', '~/.xmonad/xmonad.hs', '~/.bashrc' ]
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
@@ -31,6 +32,8 @@ set ttimeout
 set timeoutlen=50
 set foldmethod=marker
 set mouse=a
+nnoremap <Space> 3<C-d>   " Pagedown by 3 lines pressing Space
+nnoremap <S-B> 3<C-y>     " PageUp by 3 lines pressing Shift+B
 set backspace=indent,eol,start
 set autoindent
 set copyindent
@@ -119,6 +122,8 @@ map <silent> <F10> :MBEToggle<CR>
 map <silent> <F11> :bp<CR>
 " F12 in console mode: next buffer
 map <silent> <F12> :bn<CR>
+
+nnoremap <Leader>s :Startify<CR>
 
 " shortcusts for copying, mostly will be used in gvim
 vmap <C-c> "+yi
