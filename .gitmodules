@@ -1,0 +1,66 @@
+[submodule "backup/.vim/bundle/snipmate-snippets"]
+	path = backup/.vim/bundle/snipmate-snippets
+	url = git://github.com/scrooloose/snipmate-snippets.git
+[submodule "backup/.vim/bundle/gundo"]
+	path = backup/.vim/bundle/gundo
+	url = http://github.com/sjl/gundo.vim.git
+[submodule "backup/.vim/bundle/ctrlp"]
+	path = backup/.vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "backup/.vim/bundle/vim-startify"]
+	path = backup/.vim/bundle/vim-startify
+	url = https://github.com/mhinz/vim-startify.git
+[submodule "backup/.vim/bundle/vim-powerline"]
+	path = backup/.vim/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "backup/.vim/bundle/vim-ack"]
+	path = backup/.vim/bundle/vim-ack
+	url = https://github.com/mileszs/ack.vim.git
+[submodule "backup/.vim/bundle/nerdcommenter"]
+	path = backup/.vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "backup/.vim/bundle/minibufexpl"]
+	path = backup/.vim/bundle/minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule "backup/.vim/bundle/snipmate"]
+	path = backup/.vim/bundle/snipmate
+	url = https://github.com/msanders/snipmate.vim.git
+[submodule "backup/.vim/bundle/supertab"]
+	path = backup/.vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "backup/.vim/bundle/vim-autoclose"]
+	path = backup/.vim/bundle/vim-autoclose
+	url = https://github.com/Townk/vim-autoclose.git
+[submodule "backup/.vim/bundle/vim-easymotion"]
+	path = backup/.vim/bundle/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "backup/.vim/bundle/vim-fugitive"]
+	path = backup/.vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "backup/.vim/bundle/vim-gitgutter"]
+	path = backup/.vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "backup/.vim/bundle/LustyJuggler"]
+	path = backup/.vim/bundle/LustyJuggler
+	url = https://github.com/vim-scripts/LustyJuggler.git
+[submodule "backup/.vim/bundle/textobj-word-column"]
+	path = backup/.vim/bundle/textobj-word-column
+	url = https://github.com/coderifous/textobj-word-column.vim.git
+[submodule "backup/.vim/bundle/vim-surround"]
+	path = backup/.vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "backup/.vim/bundle/powerline"]
+	path = backup/.vim/bundle/powerline
+	url = https://github.com/Lokaltog/powerline.git
+[submodule "backup/.vim/bundle/MatchTag"]
+	path = backup/.vim/bundle/MatchTag
+	url = https://github.com/gregsexton/MatchTag.git
+[submodule "backup/.vim/bundle/vim-unimpaired"]
+	path = backup/.vim/bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "backup/.vim/bundle/vim-colors-solarized"]
+	path = backup/.vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "backup/.vim/bundle/gitv"]
+	path = backup/.vim/bundle/gitv
+	url = https://github.com/gregsexton/gitv.git

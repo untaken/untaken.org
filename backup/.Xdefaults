@@ -2,6 +2,7 @@ URxvt.urlLauncher:      /usr/bin/firefox
 URxvt.matcher.button:   1
 URxvt.perl-ext-common:  default,matcher,selection,-tabbed
 URxvt.selection.pattern-0: ([[:word:]]+)
+URxvt.keysym.C-BackSpace:       \033[33~
 
 URxvt*urgentOnBell: true
 URxvt.iso14755: False
@@ -10,7 +11,7 @@ URxvt*geometry: 140x50
 ! URxvt.depth: 33
 ! URxvt.background: [80]#2C001E
 urxvt*depth: 32
-URxvt.background: [60]#000000
+URxvt.background: [60]#000033
 IRC*depth: 32
 IRC.background: [65]#000000
 Tmux1*depth: 32

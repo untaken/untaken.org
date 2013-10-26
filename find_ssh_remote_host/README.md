@@ -5,7 +5,7 @@ Copyright (c) 2013 - Luke Harwood, http://www.untaken.org
 
 This software is free and is OpenSource, so feel free to do
 whatever you like with it. Make sure you update the blog post
-on http://www.untaken.org/[LINK]/
+on http://www.untaken.org/find-remote-host-ip-from-subnet-range-that-may-of-changed-from-dhcp/
 if you do :) Also check out the post for more information on 
 what this is and how it can be useful.
 

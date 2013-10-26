@@ -7,7 +7,7 @@ xrdb <$HOME/.Xdefaults
 feh --bg-scale /usr/share/backgrounds/warty-final-ubuntu.png
 
 # system tray
-trayer --edge top --align right --widthtype pixel --width 120 --SetDockType true --SetPartialStrut true --transparent true --alpha 0 --tint 0x303030 --expand true --heighttype pixel --height 16 &
+trayer --edge top --align right --widthtype pixel --width 140 --SetDockType true --SetPartialStrut true --transparent true --alpha 0 --tint 0x303030 --expand true --heighttype pixel --height 16 &
 $HOME/bin/start_irssi.pl
 
 # Start apps

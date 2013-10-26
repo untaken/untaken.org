@@ -45,7 +45,7 @@ myTerminal      = "urxvtc +bc +uc -cr Green"
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 0
+myBorderWidth   = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -61,12 +61,12 @@ myModMask       = mod1Mask
 --
 -- A tagging example:
 --
-myWorkspaces    = ["1:tmux","2:tmux","3:web","4:thunar","5:email","6:spotify","7:vbox"]
+myWorkspaces    = ["1:tmux","2:tmux","3:web","4:thunar","5:email","6:spotify","7:vbox","8:projects"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myNormalBorderColor  = "#A13322"
+myFocusedBorderColor = "#00afd7"
 
 -- }}}
 
@@ -82,12 +82,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
-    , ((0, xK_Super_L      ), kill)
-
+    , ((0, xK_Super_L      ), spawn "~/bin/restart_services.sh 2> /dev/null")
+    , ((modm, xK_Escape      ), kill)
     , ((modm, xK_Super_L ), spawn "xmenud.py")
 
     , ((0, xK_Alt_R      ), windows $ viewOnScreen 0 "2:tmux" . viewOnScreen 1 "1:tmux")
-    , ((0, xK_Super_R      ), windows $ viewOnScreen 0 "3:web" . viewOnScreen 1 "1:tmux")
+    , ((0, xK_Super_R      ), windows $ viewOnScreen 0 "2:tmux" . viewOnScreen 1 "3:web")
     , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "4:thunar" . viewOnScreen 1 "1:tmux")
     , ((0, xK_Menu      ), windows $ viewOnScreen 0 "4:thunar" . viewOnScreen 1 "5:email")
     , ((modm, xK_Menu      ), windows $ viewOnScreen 0 "5:email" . viewOnScreen 1 "1:tmux")
@@ -273,7 +273,7 @@ myManageHook = (composeAll . concat $
         role      = stringProperty "WM_WINDOW_ROLE"
         name      = stringProperty "WM_NAME"
         -- classnames
-        myFloats  = ["Smplayer","MPlayer","Xmessage","VirtualBox","XFontSel","Downloads","Nm-connection-editor","Eog","eog", "Galculator" ]
+        myFloats  = ["Smplayer","MPlayer","Xmessage","VirtualBox","XFontSel","Downloads","Nm-connection-editor","Eog","eog", "Galculator","xpad" ]
         myWebs    = ["Firefox","Google-chrome","Chromium", "Chromium-browser","chromium-browser"]
         myMusic   = ["Rhythmbox","Spotify"]
         myChat    = ["Pidgin", "Psi", "Psi+", "chat", "psi", "Skype"]
