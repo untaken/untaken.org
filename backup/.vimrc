@@ -87,6 +87,7 @@ nnoremap <Leader>8 :buf 8<CR>
 nnoremap <Leader>9 :buf 9<CR>
 nnoremap <Leader>0 :buf 10<CR>
 
+nnoremap <Leader>di o$DB::single = 1;<ESC>:w<CR>
 nnoremap <Leader>[ :tprevious<CR>
 nnoremap <Leader>] :tnext<CR>
 nnoremap <Leader>n :NERDTree<CR>
