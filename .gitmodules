@@ -64,3 +64,15 @@
 [submodule "backup/.vim/bundle/gitv"]
 	path = backup/.vim/bundle/gitv
 	url = https://github.com/gregsexton/gitv.git
+[submodule "backup/.vim/bundle/vim-smooth-scroll"]
+	path = backup/.vim/bundle/vim-smooth-scroll
+	url = https://github.com/terryma/vim-smooth-scroll.git
+[submodule "backup/.vim/bundle/nerdtree"]
+	path = backup/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "backup/.vim/bundle/tagbar"]
+	path = backup/.vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
+[submodule "backup/.vim/bundle/taglist"]
+	path = backup/.vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
