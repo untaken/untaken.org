@@ -1,7 +1,7 @@
 call pathogen#infect()
 Helptags
-call Pl#Theme#InsertSegment('pwd', 'after', 'filename')
 
+let Tlist_Show_One_File = 1
 let g:Powerline_stl_path_style = 'full'
 let g:Powerline_symbols = 'fancy'
 let mapleader = ","
@@ -16,6 +16,8 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 let g:ctrlp_open_multiple_files = 'i'
+let tlist_perl_settings='perl;u:use;p:package;r:role;e:extends;c:constant;a:attribute;s:subroutine;l:label;c:column'
+set keywordprg=perldoc\ -f
 " MiniBufExpl Colors
 hi MBEVisibleActive guifg=#A6DB29 guibg=fg
 hi MBEVisibleChangedActive guifg=#F1266F guibg=fg
@@ -25,6 +27,7 @@ hi MBEChanged guifg=#CD5907 guibg=fg
 hi MBENormal guifg=#808080 guibg=fg
 
 silent !mkdir -p ~/tmp/.vim/files/info/ > /dev/null 2>&1
+set tags=$CTAGS " Define your tag files in your .bashrc file
 set viminfo='100,<50,s10,h,n$HOME/tmp/.vim/files/info/viminfo
 set laststatus=2
 set notimeout
@@ -83,6 +86,12 @@ nnoremap <Leader>7 :buf 7<CR>
 nnoremap <Leader>8 :buf 8<CR>
 nnoremap <Leader>9 :buf 9<CR>
 nnoremap <Leader>0 :buf 10<CR>
+
+nnoremap <Leader>[ :tprevious<CR>
+nnoremap <Leader>] :tnext<CR>
+nnoremap <Leader>n :NERDTree<CR>
+nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <silent> <Leader>b :TlistToggle<CR>
 
 map sh :sh<cr>
 map wc :!clear;perl -wc %<cr>
