@@ -12,5 +12,5 @@ Config { font = "xft:Monaco for Powerline:regular:size=8.4:antialias=false"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fc=red>%irc%</fc>  -   %eth0% %cpu% %memory% %swap% <fc=#5fd7d7>%date%</fc>                     "
+       , template = "%StdinReader% }{ <fc=red>%irc%</fc>  -   %eth0% %cpu% %memory% %swap% <fc=#5fd7d7>%date%</fc>                           "
        }
