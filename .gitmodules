@@ -76,3 +76,12 @@
 [submodule "backup/.vim/bundle/taglist"]
 	path = backup/.vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "backup/.vim/bundle/conque-shell"]
+	path = backup/.vim/bundle/conque-shell
+	url = https://github.com/vim-scripts/Conque-Shell.git
+[submodule "backup/.vim/bundle/vim-shell"]
+	path = backup/.vim/bundle/vim-shell
+	url = https://github.com/xolox/vim-shell.git
+[submodule "backup/.vim/bundle/vim-misc"]
+	path = backup/.vim/bundle/vim-misc
+	url = https://github.com/xolox/vim-misc.git
