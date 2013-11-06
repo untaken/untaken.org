@@ -1,7 +1,3 @@
-[submodule "backup/.vim/bundle/snipmate-snippets"]
-	path = backup/.vim/bundle/snipmate-snippets
-	url = git://github.com/scrooloose/snipmate-snippets.git
-	ignore = dirty
 [submodule "backup/.vim/bundle/gundo"]
 	path = backup/.vim/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
@@ -26,6 +22,7 @@
 [submodule "backup/.vim/bundle/snipmate"]
 	path = backup/.vim/bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
+    ignore = dirty
 [submodule "backup/.vim/bundle/supertab"]
 	path = backup/.vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
