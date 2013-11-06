@@ -1,6 +1,7 @@
 [submodule "backup/.vim/bundle/snipmate-snippets"]
 	path = backup/.vim/bundle/snipmate-snippets
 	url = git://github.com/scrooloose/snipmate-snippets.git
+	ignore = dirty
 [submodule "backup/.vim/bundle/gundo"]
 	path = backup/.vim/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
@@ -76,6 +77,7 @@
 [submodule "backup/.vim/bundle/taglist"]
 	path = backup/.vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
+    ignore = dirty
 [submodule "backup/.vim/bundle/conque-shell"]
 	path = backup/.vim/bundle/conque-shell
 	url = https://github.com/vim-scripts/Conque-Shell.git
