@@ -225,9 +225,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Layouts {{{
 
 myLayout  =  spacing 7                                                          $
-             onWorkspaces ["1:tmux", "6:spotify", "7:vbox" ]          allLayout $
-             onWorkspaces ["2:tmux", "3:web", "5:email"]             tallLayout $
-             onWorkspaces ["4:thunar"]                             thunarLayout $
+             onWorkspaces ["1:tmux", "3:web", "6:spotify", "7:vbox" ]  allLayout $
+             onWorkspaces ["2:tmux", "5:email"]                        tallLayout $
+             onWorkspaces ["4:thunar"]                                 thunarLayout $
              allLayout
 -- Layout
 tallLayout = avoidStruts $ Full ||| tiled 
@@ -317,6 +317,7 @@ myStartupHook = spawn "xset r rate 400 75"
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
+  xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmobarrc_2nd"
   xmproc <- spawnPipe "/usr/bin/xmobar --screen 1 /home/luke/.xmobarrc"
   xmonad $ ewmh defaultConfig {
       -- simple stuff
