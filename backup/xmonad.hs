@@ -30,6 +30,9 @@ import XMonad.Layout.LayoutModifier
 import XMonad.Layout.Grid
 import XMonad.Layout.ThreeColumns
 import XMonad.Util.Scratchpad
+import XMonad.Util.NamedScratchpad
+import XMonad.Layout.Minimize
+import XMonad.Actions.Search
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -61,7 +64,7 @@ myModMask       = mod1Mask
 --
 -- A tagging example:
 --
-myWorkspaces    = ["1:tmux","2:tmux","3:web","4:thunar","5:email","6:spotify","7:vbox","8:projects"]
+myWorkspaces    = ["1:tmux","2:tmux","3:web","4:email","5:misc","6:vbox"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -86,14 +89,19 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Escape      ), kill)
     , ((modm, xK_Super_L ), spawn "xmenud.py")
 
-    , ((0, xK_Alt_R      ), windows $ viewOnScreen 0 "2:tmux" . viewOnScreen 1 "1:tmux")
-    , ((0, xK_Super_R      ), windows $ viewOnScreen 0 "2:tmux" . viewOnScreen 1 "3:web")
-    , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "4:thunar" . viewOnScreen 1 "1:tmux")
-    , ((0, xK_Menu      ), windows $ viewOnScreen 0 "4:thunar" . viewOnScreen 1 "5:email")
-    , ((modm, xK_Menu      ), windows $ viewOnScreen 0 "5:email" . viewOnScreen 1 "1:tmux")
-    , ((modm, xK_Control_R      ), windows $ viewOnScreen 0 "6:spotify" . viewOnScreen 1 "7:vbox")
+    , ((0, xK_Alt_R      ), windows $ viewOnScreen 0 "1:tmux" . viewOnScreen 1 "2:tmux")
+    , ((0, xK_Super_R      ), windows $ viewOnScreen 0 "1:tmux" . viewOnScreen 1 "3:web")
+    , ((0, xK_Control_R      ), windows $ viewOnScreen 0 "4:email" . viewOnScreen 1 "1:tmux")
+    , ((0, xK_Menu      ), windows $ viewOnScreen 0 "4:email" . viewOnScreen 1 "5:spotify")
+    , ((modm, xK_Menu      ), windows $ viewOnScreen 0 "4:email" . viewOnScreen 1 "1:tmux")
+    , ((modm, xK_Control_R      ), windows $ viewOnScreen 0 "5:spotify" . viewOnScreen 1 "6:vbox")
 
-    , ((modm , xK_Super_R ), scratchpadSpawnActionTerminal "urxvt")
+    , ((modm, xK_KP_Insert ), namedScratchpadAction scratchpads "urxvtc1")
+    , ((modm, xK_KP_Delete ), namedScratchpadAction scratchpads "urxvtc2")
+    , ((modm , xK_KP_End ), scratchpadSpawnActionTerminal "urxvt")
+    , ((modm, xK_KP_Page_Down ), namedScratchpadAction scratchpads "gedit")
+    , ((modm, xK_KP_Down ), namedScratchpadAction scratchpads "gedit" <+> namedScratchpadAction scratchpads "thunar")
+    , ((modm, xK_KP_Left ), namedScratchpadAction scratchpads "spotify")
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
@@ -114,7 +122,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_k     ), windows W.focusUp  )
 
     -- Move focus to the master window
-    , ((modm,               xK_m     ), windows W.focusMaster  )
+    -- , ((modm,               xK_m     ), windows W.focusMaster  )
+
+    , ((modm,               xK_m     ), withFocused minimizeWindow)
+    , ((modm .|. shiftMask, xK_m     ), sendMessage RestoreNextMinimizedWin)
 
     -- Swap the focused window and the master window
     , ((modm,               xK_Return), windows W.swapMaster)
@@ -159,7 +170,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_Left),  prevScreen)
     , ((modm .|. shiftMask, xK_Right), shiftNextScreen)
     , ((modm .|. shiftMask, xK_Left),  shiftPrevScreen)
-    , ((modm,               xK_z),     toggleWS)
+    , ((modm,               xK_z),     toggleWS' ["NSP"])
     , ((modm,               xK_Alt_R),     swapNextScreen)
 
     , ((modm, xK_c),    spawn "tmux save-buffer - | xclip -i -selection clipboard")
@@ -225,26 +236,18 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Layouts {{{
 
 myLayout  =  spacing 7                                                          $
-             onWorkspaces ["1:tmux", "3:web", "6:spotify", "7:vbox" ]  allLayout $
-             onWorkspaces ["2:tmux", "5:email"]                        tallLayout $
-             onWorkspaces ["4:thunar"]                                 thunarLayout $
+             onWorkspaces ["1:tmux", "3:web", "5:spotify", "6:vbox" ]  allLayout $
+             onWorkspaces ["2:tmux", "4:email"]                        tallLayout $
+             -- onWorkspaces ["4:thunar"]                                 thunarLayout $
              allLayout
 -- Layout
-tallLayout = avoidStruts $ Full ||| tiled 
+tallLayout = avoidStruts $ minimize Full ||| minimize tiled 
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
 
-allLayout = avoidStruts $ Full ||| tiled ||| Mirror tiled
+allLayout = avoidStruts $ minimize Full ||| minimize tiled ||| minimize (Mirror tiled)
   where
     tiled   = ResizableTall 1 (2/100) (1/2) []
-
-thunarLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ withIM (1%3) (ClassName "Thunar") (Grid) ||| Full ||| withIM (1%100) (ClassName "Thunar") (Grid)
-  where
-    chatLayout      = Grid
-    ratio           = (1%8)
-    skypeRatio      = (1%8)
-    pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
-    skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm")) `And` (Not (Role "ConversationsWindow"))
 
 vboxlayout =  avoidStruts $ Full
 
@@ -259,17 +262,18 @@ myManageHook = (composeAll . concat $
     , [appName      =? "Global"    --> doShift  "1:tmux"]
     , [title        =? "Tmux2"    --> doShift  "2:tmux"] 
     , [className    =? c          --> doShift  "3:web"     |   c   <- myWebs   ]
-    , [className    =? c          --> doShift  "4:thunar"      |   c   <- myChat   ]
-    , [className    =? c          --> doShift  "4:thunar"  |   c   <- myThunar ]
-    , [className    =? c          --> doShift  "6:spotify" |   c   <- myMusic  ]
+    , [className    =? c          --> doShift  "5:spotify" |   c   <- myMusic  ]
     , [className    =?           "Orage" --> doFloatAt (1/1680) (1-176/1050) ]
-    , [className    =?           "Thunderbird" --> doShift "5:email" ]
-    , [className    =?           "VirtualBox" --> doShift "7:vbox" ]
-    , [className    =? "Pidgin" <&&> title =? "Buddy List" --> doShift "5:email"]
+    , [className    =?           "Thunderbird" --> doShift "4:email" ]
+    , [className    =?           "Okular" --> doShift "5:misc" ]
+    , [ prefixTitle "libreoffice" <||> prefixTitle "LibreOffice" --> doShift "5:misc" ] 
+    , [className    =?           "VirtualBox" --> doShift "6:vbox" ]
+    , [className    =? "Pidgin" <&&> title =? "Buddy List" --> doShift "4:email"]
     , [className    =? c          --> doCenterFloat | c <- myFloats ]
     ])
 
     where
+        prefixTitle prefix = fmap (prefix `isPrefixOf`) title
         role      = stringProperty "WM_WINDOW_ROLE"
         name      = stringProperty "WM_NAME"
         -- classnames
@@ -277,7 +281,7 @@ myManageHook = (composeAll . concat $
         myWebs    = ["Firefox","Google-chrome","Chromium", "Chromium-browser","chromium-browser"]
         myMusic   = ["Rhythmbox","Spotify"]
         myChat    = ["Pidgin", "Psi", "Psi+", "chat", "psi", "Skype"]
-        myThunar  = ["Thunar","Gedit"]
+        -- myThunar  = ["Thunar","Gedit"]
 
         -- resources
         myIgnores = ["desktop","desktop_window","notify-osd","stalonetray","trayer","xfce4-notifyd"]
@@ -299,6 +303,35 @@ manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
     w = 1       -- terminal width, 100%
     t = 1 - h   -- distance from top edge, 90%
     l = 1 - w   -- distance from left edge, 0%
+
+
+-- Named scratchpad
+scratchpads = [
+ -- run htop in xterm, find it by title, use default floating window placement
+     NS "thunar" "thunar" (className =? "Thunar") 
+     (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)),
+
+     NS "gedit" "gedit" (className =? "Gedit")
+     (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
+
+     NS "spotify" "spotify" (className =? "Spotify")
+     (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
+
+     NS "urxvtc1" "urxvtc -name urxvtc1" (title =? "urxvtc1")
+     (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
+
+     NS "urxvtc2" "urxvtc -name urxvtc2" (title =? "urxvtc2")
+     (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
+     
+ -- run stardict, find it by class name, place it in the floating window
+ -- 1/6 of screen width from the left, 1/6 of screen height
+ -- from the top, 2/3 of screen width by 2/3 of screen height
+     NS "stardict" "stardict" (className =? "Stardict")
+         (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+
+ ] where role = stringProperty "WM_WINDOW_ROLE"
+
+
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -335,7 +368,7 @@ main = do
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = myManageHook <+> manageScratchPad <+> manageDocks,
+        manageHook         = myManageHook <+> manageScratchPad <+> namedScratchpadManageHook scratchpads <+> manageDocks,
         logHook            = dynamicLogWithPP xmobarPP
                                                   { ppOutput = hPutStrLn xmproc
                                                   , ppTitle = xmobarColor "#5fd7d7" "" . shorten 50
