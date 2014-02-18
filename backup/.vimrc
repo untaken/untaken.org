@@ -30,6 +30,7 @@ silent !mkdir -p ~/tmp/.vim/files/info/ > /dev/null 2>&1
 set tags=$CTAGS " Define your tag files in your .bashrc file
 set viminfo='100,<50,s10,h,n$HOME/tmp/.vim/files/info/viminfo
 set laststatus=2
+set notitle
 set notimeout
 set ttimeout
 set timeoutlen=50
@@ -70,12 +71,20 @@ autocmd InsertEnter * highlight  CursorLine ctermbg=4 ctermfg=White
 autocmd InsertLeave * set nocursorline
 autocmd InsertLeave * highlight  CursorLine ctermbg=Black ctermfg=None
 
+" .tt should be classed as html
 autocmd BufRead,BufNewFile *.tt set filetype=html
+
+" .psgi should be treated as Perl
+autocmd BufRead,BufNewFile *.psgi set filetype=perl
+
+" Allow p at startify screen to open ctrlp 
 autocmd FileType startify nnoremap <buffer> p :enew\|CtrlP<cr>
-autocmd FileType startify nnoremap <buffer> g :args `git status --porcelain \\| sed -ne 's/^ M //p'`<cr>
+
+" Allow g at startify screen to open files edited according to git
+"autocmd FileType startify nnoremap <buffer> g :args `git status --porcelain \\| sed -ne 's/^ M //p'`<cr>
+autocmd FileType startify nnoremap <buffer> g :args `git ls-files -o --exclude-standard -m`<cr>
 
 " Switch to buffer N with <Leader>N
-
 nnoremap <Leader>1 :buf 1<CR>
 nnoremap <Leader>2 :buf 2<CR>
 nnoremap <Leader>3 :buf 3<CR>
@@ -87,12 +96,22 @@ nnoremap <Leader>8 :buf 8<CR>
 nnoremap <Leader>9 :buf 9<CR>
 nnoremap <Leader>0 :buf 10<CR>
 
+" Insert a perl debugger stop, so in perl debugger c continues till it hits it
 nnoremap <Leader>di o$DB::single = 1;<ESC>:w<CR>
+
+" Jump to next tag
 nnoremap <Leader>[ :tprevious<CR>
+
+" Jump to previous tag
 nnoremap <Leader>] :tnext<CR>
+
+" <Leader>n to open NERDTree
 nnoremap <Leader>n :NERDTree<CR>
-nnoremap <leader>. :CtrlPTag<cr>
-nnoremap <silent> <Leader>b :TlistToggle<CR>
+
+nnoremap <leader>. :CtrlPBuffer<cr>
+nnoremap <Leader>b :LustyBufferExplorer<CR>
+
+vmap <Leader>d :<C-U>1,'<-1d\|'>+1,$d<CR>gg
 
 map sh :sh<cr>
 map wc :!clear;perl -wc %<cr>
@@ -135,6 +154,8 @@ map <silent> <F12> :bn<CR>
 
 nnoremap <Leader>s :Startify<CR>
 
+" Paste text from console mode
+nnoremap <MiddleMouse> "*p
 " shortcusts for copying, mostly will be used in gvim
 vmap <C-c> "+yi
 vmap <C-x> "+c
