@@ -108,8 +108,7 @@ nnoremap <Leader>] :tnext<CR>
 " <Leader>n to open NERDTree
 nnoremap <Leader>n :NERDTree<CR>
 
-nnoremap <leader>. :CtrlPBuffer<cr>
-nnoremap <Leader>b :LustyBufferExplorer<CR>
+nnoremap <leader>b :CtrlPBuffer<cr>
 
 vmap <Leader>d :<C-U>1,'<-1d\|'>+1,$d<CR>gg
 
