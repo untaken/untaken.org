@@ -84,3 +84,6 @@
 [submodule "backup/.vim/bundle/vim-misc"]
 	path = backup/.vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
+[submodule "backup/.vim/bundle/LustyExplorer"]
+	path = backup/.vim/bundle/LustyExplorer
+	url = https://github.com/vim-scripts/LustyExplorer.git
