@@ -102,6 +102,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_KP_Page_Down ), namedScratchpadAction scratchpads "gedit")
     , ((modm, xK_KP_Down ), namedScratchpadAction scratchpads "gedit" <+> namedScratchpadAction scratchpads "thunar")
     , ((modm, xK_KP_Left ), namedScratchpadAction scratchpads "spotify")
+    , ((modm, xK_KP_Right ), allNamedScratchpadAction scratchpads "xpad")
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
@@ -291,9 +292,7 @@ myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = False
 -- }}}
 
---
--- Scratchpad
---
+-- Scratchpads {{{
 manageScratchPad :: ManageHook
 manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
 
@@ -321,16 +320,13 @@ scratchpads = [
      (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
 
      NS "urxvtc2" "urxvtc -name urxvtc2" (title =? "urxvtc2")
-     (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
-     
- -- run stardict, find it by class name, place it in the floating window
- -- 1/6 of screen width from the left, 1/6 of screen height
- -- from the top, 2/3 of screen width by 2/3 of screen height
-     NS "stardict" "stardict" (className =? "Stardict")
-         (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+     (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)),
+
+     NS "xpad" "xpad" (className =? "xpad")
+     (defaultFloating) 
 
  ] where role = stringProperty "WM_WINDOW_ROLE"
-
+-- }}}
 
 
 ------------------------------------------------------------------------
