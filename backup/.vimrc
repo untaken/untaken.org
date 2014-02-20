@@ -145,7 +145,7 @@ map <silent> <F7> ,c <CR>
 map <silent> <F8> :TlistToggle<CR>
 " F9 in console mode: Fold code using markers
 map <F9> :call ToggleFolderMarker()<CR>
-map <silent> <F10> :MBEToggle<CR>
+map <silent> <F10> :CtrlPBuffer<CR>
 " F11 in console mode: previous buffer
 map <silent> <F11> :bp<CR>
 " F12 in console mode: next buffer
