@@ -6,11 +6,10 @@ Config { font = "xft:Monaco for Powerline:regular:size=8.4:antialias=false"
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
-                    , Run Com "last_irc_message" [] "irc" 10 
                     , Run Date "%a %b %_d %l:%M" "date" 10
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fc=red>%irc%</fc>  -   %eth0% %cpu% %memory% %swap% <fc=#5fd7d7>%date%</fc>                           "
+       , template = "%StdinReader% }{   -   %eth0% %cpu% %memory% %swap% <fc=#5fd7d7>%date%</fc>                           "
        }
