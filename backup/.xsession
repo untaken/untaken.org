@@ -35,7 +35,7 @@ pidgin &
 #(sleep 3 && urxvtc +bc +uc -cr Green -name IRC -title IRC -e sh -c "screen -r") &
 (sleep 8 && chromium-browser) &
 #(sleep 15 && thunar) &
-(sleep 20 && skype) &
+#(sleep 20 && skype) &
 (sleep 30 && spotify) &
 (sleep 60 && autokey) &
 
