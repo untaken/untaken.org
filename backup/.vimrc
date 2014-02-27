@@ -11,20 +11,9 @@ let perl_extended_vars = 1
 let g:startify_files_number = 25 
 let g:startify_change_to_dir = 0 
 let g:startify_bookmarks = [ '~/.vimrc', '~/.xmonad/xmonad.hs', '~/.bashrc' ]
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
 let g:ctrlp_open_multiple_files = 'i'
 let tlist_perl_settings='perl;u:use;p:package;r:role;e:extends;c:constant;a:attribute;s:subroutine;l:label;c:column'
 set keywordprg=perldoc\ -f
-" MiniBufExpl Colors
-hi MBEVisibleActive guifg=#A6DB29 guibg=fg
-hi MBEVisibleChangedActive guifg=#F1266F guibg=fg
-hi MBEVisibleChanged guifg=#F1266F guibg=fg
-hi MBEVisibleNormal guifg=#5DC2D6 guibg=fg
-hi MBEChanged guifg=#CD5907 guibg=fg
-hi MBENormal guifg=#808080 guibg=fg
 
 silent !mkdir -p ~/tmp/.vim/files/info/ > /dev/null 2>&1
 set tags=$CTAGS " Define your tag files in your .bashrc file
@@ -69,7 +58,7 @@ autocmd InsertEnter * highlight  CursorLine ctermbg=4 ctermfg=White
 
 " Revert Color to default when leaving Insert Mode
 autocmd InsertLeave * set nocursorline
-autocmd InsertLeave * highlight  CursorLine ctermbg=Black ctermfg=None
+autocmd InsertLeave * highlight  CursorLine ctermbg=187 ctermfg=Black
 
 " .tt should be classed as html
 autocmd BufRead,BufNewFile *.tt set filetype=html
@@ -83,18 +72,6 @@ autocmd FileType startify nnoremap <buffer> p :enew\|CtrlP<cr>
 " Allow g at startify screen to open files edited according to git
 "autocmd FileType startify nnoremap <buffer> g :args `git status --porcelain \\| sed -ne 's/^ M //p'`<cr>
 autocmd FileType startify nnoremap <buffer> g :args `git ls-files -o --exclude-standard -m`<cr>
-
-" Switch to buffer N with <Leader>N
-nnoremap <Leader>1 :buf 1<CR>
-nnoremap <Leader>2 :buf 2<CR>
-nnoremap <Leader>3 :buf 3<CR>
-nnoremap <Leader>4 :buf 4<CR>
-nnoremap <Leader>5 :buf 5<CR>
-nnoremap <Leader>6 :buf 6<CR>
-nnoremap <Leader>7 :buf 7<CR>
-nnoremap <Leader>8 :buf 8<CR>
-nnoremap <Leader>9 :buf 9<CR>
-nnoremap <Leader>0 :buf 10<CR>
 
 " Insert a perl debugger stop, so in perl debugger c continues till it hits it
 nnoremap <Leader>di o$DB::single = 1;<ESC>:w<CR>
@@ -119,6 +96,9 @@ map com :!cd %:h && git pull && git commit %:t<cr>
 map rs :!restartapache<cr>
 map run :w<cr>:!perl %
 map rund :w<cr>:!perl -d %<cr>
+" Add a mapping for :bd but will work with a vsplit, so it don't close it
+command! BD silent e# | bd#
+map <Leader>bd :BD<cr>
 
 " Allow ctrl+down/up to act like mouse scroll
 nmap <C-Down> <C-E>
@@ -142,7 +122,6 @@ map <silent> <F6> :se invhlsearch<CR>
 vmap <silent> <F7> ,c <CR>
 " F7 in console mode: Comments code 
 map <silent> <F7> ,c <CR>
-map <silent> <F8> :TlistToggle<CR>
 " F9 in console mode: Fold code using markers
 map <F9> :call ToggleFolderMarker()<CR>
 map <silent> <F10> :CtrlPBuffer<CR>
