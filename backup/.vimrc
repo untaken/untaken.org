@@ -15,10 +15,6 @@ let g:ctrlp_open_multiple_files = 'i'
 let tlist_perl_settings='perl;u:use;p:package;r:role;e:extends;c:constant;a:attribute;s:subroutine;l:label;c:column'
 set keywordprg=perldoc\ -f
 
-if $COLORTERM == 'gnome-terminal'
-      set t_Co=256
-endif
-
 silent !mkdir -p ~/tmp/.vim/files/info/ > /dev/null 2>&1
 set tags=$CTAGS " Define your tag files in your .bashrc file
 set viminfo='100,<50,s10,h,n$HOME/tmp/.vim/files/info/viminfo
