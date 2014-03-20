@@ -26,6 +26,10 @@ hi MBEVisibleNormal guifg=#5DC2D6 guibg=fg
 hi MBEChanged guifg=#CD5907 guibg=fg
 hi MBENormal guifg=#808080 guibg=fg
 
+if $COLORTERM == 'gnome-terminal'
+      set t_Co=256
+endif
+
 silent !mkdir -p ~/tmp/.vim/files/info/ > /dev/null 2>&1
 set tags=$CTAGS " Define your tag files in your .bashrc file
 set viminfo='100,<50,s10,h,n$HOME/tmp/.vim/files/info/viminfo
