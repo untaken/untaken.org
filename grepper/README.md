@@ -1,7 +1,7 @@
 grepper - Search multiple words in files
 ---------------------------
 
-Syntax: grepper -i <first> <second> <third> ...
+Syntax: `grepper -i <first> <second> <third> ...`
 
    -i switch is for case insensitive search
 
