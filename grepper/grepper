@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# Search for words found in files using grep, so for example, I need to find a file with
+# the words 'researched' 'found' 'belonging', I would call this like:
+#
+# ./grepper researched found belonging
+#
+# Syntax: grepper -i <first> <second> <third> ...
+#
+# The -i switch is for case insensitive search
+
+# check options passed to script for -i
+incase='';
+while getopts "i" optname
+   do
+   case "$optname" in
+   "i")
+       incase='i';
+       ;;
+    esac
+done
+
+# Use first argument for starting grep
+args=("$@")
+command="grep -lRZ$incase '${args[0]}' *"
+
+# remove first and last argument
+unset args[0]
+lastArg=${args[${#args[@]}]}
+unset args[${#args[@]}]
+
+# concat xargs commands
+for search in "${args[@]}"
+do
+    command=$command"| xargs -0 grep -lZ$incase '$search'"
+done
+
+# Finally join up then execute
+command=$command"| xargs -0 grep -l$incase '$lastArg'"
+eval $command
