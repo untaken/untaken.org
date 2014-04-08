@@ -9,7 +9,7 @@ if you do.
 Little script to be able to call as many servers you like with a command. Simply
 call like:
 
-./fork_servers.pl somehost.co.uk someotherhost.com ...
+`./fork_servers.pl somehost.co.uk someotherhost.com ...`
 
 It will return the results from all the hosts prepending <host>: in front.
 
