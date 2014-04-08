@@ -1,5 +1,5 @@
 fork_servers.pl
-===========================
+------------------------------
 Copyright (c) 2013 - Luke Harwood, http://www.untaken.org
 
 This software is free and is OpenSource, so feel free to do whatever you like with it.
