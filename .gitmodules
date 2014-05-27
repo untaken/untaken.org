@@ -87,3 +87,9 @@
 [submodule "backup/.vim/bundle/LustyExplorer"]
 	path = backup/.vim/bundle/LustyExplorer
 	url = https://github.com/vim-scripts/LustyExplorer.git
+[submodule "backup/.vim/bundle/rainbow_parentheses"]
+	path = backup/.vim/bundle/rainbow_parentheses
+	url = https://github.com/kien/rainbow_parentheses.vim.git
+[submodule "backup/.vim/bundle/vim-css-color"]
+	path = backup/.vim/bundle/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
