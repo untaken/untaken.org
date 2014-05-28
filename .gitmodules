@@ -93,3 +93,9 @@
 [submodule "backup/.vim/bundle/vim-css-color"]
 	path = backup/.vim/bundle/vim-css-color
 	url = https://github.com/ap/vim-css-color.git
+[submodule "backup/.vim/bundle/vim-dispatch"]
+	path = backup/.vim/bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
+[submodule "backup/.vim/bundle/vim-togglelist"]
+	path = backup/.vim/bundle/vim-togglelist
+	url = https://github.com/milkypostman/vim-togglelist.git
