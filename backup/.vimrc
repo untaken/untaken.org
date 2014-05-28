@@ -24,7 +24,8 @@ set notimeout
 set ttimeout
 set timeoutlen=50
 set foldmethod=marker
-set mouse=a
+" Learning without the mouse for a bit
+"set mouse=a
 nnoremap <Space> 3<C-d>   " Pagedown by 3 lines pressing Space
 nnoremap <S-B> 3<C-y>     " PageUp by 3 lines pressing Shift+B
 set backspace=indent,eol,start
@@ -51,6 +52,8 @@ hi! link SignColumn LineNr " Git gutter same color as linenumber
 
 au BufRead,BufNewFile *.t set filetype=perl
 
+" check perl code with :make
+ autocmd FileType perl set makeprg=perl\ -wc\ %\ $*
 
 " Change Color when entering Insert Mode
 autocmd InsertEnter * set cursorline
@@ -66,12 +69,14 @@ autocmd BufRead,BufNewFile *.tt set filetype=html
 " .psgi should be treated as Perl
 autocmd BufRead,BufNewFile *.psgi set filetype=perl
 
-" Allow p at startify screen to open ctrlp 
+" Allow p at startify screen to open ctrlpc 
 autocmd FileType startify nnoremap <buffer> p :enew\|CtrlP<cr>
 
 " Allow g at startify screen to open files edited according to git
-"autocmd FileType startify nnoremap <buffer> g :args `git status --porcelain \\| sed -ne 's/^ M //p'`<cr>
 autocmd FileType startify nnoremap <buffer> g :args `git ls-files -o --exclude-standard -m`<cr>
+
+autocmd BufRead,BufNewFile *.pl let b:dispatch = 'perl -d %'
+autocmd BufRead,BufNewFile *.t let b:dispatch = 'prove -v %'
 
 " Insert a perl debugger stop, so in perl debugger c continues till it hits it
 nnoremap <Leader>di o$DB::single = 1;<ESC>:w<CR>
@@ -82,15 +87,12 @@ nnoremap <Leader>[ :tprevious<CR>
 " Jump to previous tag
 nnoremap <Leader>] :tnext<CR>
 
-" <Leader>n to open NERDTree
-nnoremap <Leader>n :NERDTree<CR>
-
-nnoremap <leader>b :CtrlPBuffer<cr>
+nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR> <ESC>
+nnoremap <leader>d :Dispatch<CR>
 
 vmap <Leader>d :<C-U>1,'<-1d\|'>+1,$d<CR>gg
 
-map sh :sh<cr>
-map wc :!clear;perl -wc %<cr>
+map wc :Make<cr>
 map diff :!cd %:h && git diff %:t<cr>
 map com :!cd %:h && git pull && git commit %:t<cr>
 map rs :!restartapache<cr>
@@ -104,6 +106,9 @@ map <Leader>bd :BD<cr>
 nmap <C-Down> <C-E>
 nmap <C-Up> <C-Y>
 
+" F1 goes to top of screen and calls vim-easymotion
+nmap <silent> <F1> H,,w
+nnoremap <silent> <F3> :set nonumber!<CR>
 " F2 in visual mode : Paste toggle (setup above)
 " F3 in console mode: Line number toggle
 " nnoremap <silent> <F3> :call GitGutterToggle()<CR>:set nonumber!<CR>
