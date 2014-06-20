@@ -5,13 +5,16 @@ let Tlist_Show_One_File = 1
 let g:Powerline_stl_path_style = 'full'
 let g:Powerline_symbols = 'fancy'
 let mapleader = ","
+noremap \ ,
 let perl_nofold_packages=1
 let perl_include_pod = 1
 let perl_extended_vars = 1
 let g:startify_files_number = 25 
 let g:startify_change_to_dir = 0 
+let g:startify_list_order = ['bookmarks', 'dir', 'files', 'sessions']
 let g:startify_bookmarks = [ '~/.vimrc', '~/.xmonad/xmonad.hs', '~/.bashrc' ]
 let g:ctrlp_open_multiple_files = 'i'
+let g:ctrlp_max_files=0
 let tlist_perl_settings='perl;u:use;p:package;r:role;e:extends;c:constant;a:attribute;s:subroutine;l:label;c:column'
 set keywordprg=perldoc\ -f
 
@@ -49,19 +52,12 @@ let g:solarized_termcolors = '256'
 set background=light
 colorscheme solarized
 hi! link SignColumn LineNr " Git gutter same color as linenumber
+set cursorline
 
 au BufRead,BufNewFile *.t set filetype=perl
 
 " check perl code with :make
  autocmd FileType perl set makeprg=perl\ -wc\ %\ $*
-
-" Change Color when entering Insert Mode
-autocmd InsertEnter * set cursorline
-autocmd InsertEnter * highlight  CursorLine ctermbg=4 ctermfg=White
-
-" Revert Color to default when leaving Insert Mode
-autocmd InsertLeave * set nocursorline
-autocmd InsertLeave * highlight  CursorLine ctermbg=187 ctermfg=Black
 
 " .tt should be classed as html
 autocmd BufRead,BufNewFile *.tt set filetype=html
