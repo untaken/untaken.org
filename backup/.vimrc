@@ -30,7 +30,11 @@ set foldmethod=marker
 " Learning without the mouse for a bit
 "set mouse=a
 nnoremap <Space> 3<C-d>   " Pagedown by 3 lines pressing Space
-nnoremap <S-B> 3<C-y>     " PageUp by 3 lines pressing Shift+B
+" Shift+b to page up, but if you add the line below to .Xdefaults 
+" you will be able to use shift+space:
+" URxvt.keysym.Shift-space: B
+nnoremap <S-b> 3<C-y>     " PageUp by 3 lines pressing Shift+B
+
 set backspace=indent,eol,start
 set autoindent
 set copyindent
