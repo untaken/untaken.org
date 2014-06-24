@@ -87,3 +87,6 @@
 [submodule "backup/.vim/bundle/LustyExplorer"]
 	path = backup/.vim/bundle/LustyExplorer
 	url = https://github.com/vim-scripts/LustyExplorer.git
+[submodule "backup/Monaco_Linux-Powerline"]
+	path = backup/Monaco_Linux-Powerline
+	url = https://gist.github.com/1634235.git
