@@ -5,6 +5,8 @@ if [ -e ~/.screenlayout/layout.sh ] ; then
 fi
 
 xrdb <$HOME/.Xdefaults
+# map caps lock as extra escape
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'&
 feh --bg-scale /usr/share/backgrounds/warty-final-ubuntu.png
 
 # java fix

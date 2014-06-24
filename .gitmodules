@@ -90,3 +90,15 @@
 [submodule "backup/Monaco_Linux-Powerline"]
 	path = backup/Monaco_Linux-Powerline
 	url = https://gist.github.com/1634235.git
+[submodule "backup/.vim/bundle/rainbow_parentheses"]
+	path = backup/.vim/bundle/rainbow_parentheses
+	url = https://github.com/kien/rainbow_parentheses.vim.git
+[submodule "backup/.vim/bundle/vim-css-color"]
+	path = backup/.vim/bundle/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
+[submodule "backup/.vim/bundle/vim-dispatch"]
+	path = backup/.vim/bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
+[submodule "backup/.vim/bundle/vim-togglelist"]
+	path = backup/.vim/bundle/vim-togglelist
+	url = https://github.com/milkypostman/vim-togglelist.git

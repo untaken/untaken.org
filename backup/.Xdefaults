@@ -3,6 +3,7 @@ URxvt.matcher.button:   1
 URxvt.perl-ext-common:  default,matcher,selection,-tabbed,autocomplete-ALL-the-things,osc-xterm-clipboard
 URxvt.selection.pattern-0: ([[:word:]]+)
 URxvt.keysym.C-BackSpace:       \033[33~
+URxvt.keysym.Shift-space: B 
 
 URxvt*urgentOnBell: true
 URxvt.iso14755: False
