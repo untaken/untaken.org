@@ -99,3 +99,6 @@
 [submodule "backup/.vim/bundle/vim-togglelist"]
 	path = backup/.vim/bundle/vim-togglelist
 	url = https://github.com/milkypostman/vim-togglelist.git
+[submodule "EasyMotion"]
+	path = backup/.vim/bundle/vim-easymotion
+	url = https://github.com/wilywampa/vim-easymotion.git
