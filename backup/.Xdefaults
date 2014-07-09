@@ -1,10 +1,11 @@
-URxvt.urlLauncher:      /usr/bin/firefox
+true.urlLauncher:      /usr/bin/firefox
 URxvt.matcher.button:   1
 URxvt.perl-ext-common:  default,matcher,selection,-tabbed,autocomplete-ALL-the-things,osc-xterm-clipboard
 URxvt.selection.pattern-0: ([[:word:]]+)
 URxvt.keysym.C-BackSpace:       \033[33~
 URxvt.keysym.Shift-space: B 
 
+URxvt*cursorColor: Green 
 URxvt*urgentOnBell: true
 URxvt.iso14755: False
 URxvt.termName:             rxvt-256color
@@ -21,9 +22,7 @@ Tmux2*depth: 32
 Tmux2.background: [65]#000000
 ! urxvt*background: rgba:0000/0000/0200/c800
 URxvt*foreground:White
-URxvt*cursorBlink: false
 URxvt*borderLess: false
-URxvt*cursorUnderline: true
 URxvt.visualBell: false
 URxvt*scrollBar: false
 URxvt*scrollstyle: plain
