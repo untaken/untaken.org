@@ -155,9 +155,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Deincrement the number of windows in the master area
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
 
-    -- toggle the status bar gap (used with avoidStruts from Hooks.ManageDocks)
-    -- , ((modm , xK_b ), sendMessage ToggleStruts)
-
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
@@ -178,23 +175,18 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_Alt_R),     swapNextScreen)
 
     , ((modm, xK_c),    spawn "tmux save-buffer - | xclip -i -selection clipboard")
-
     , ((modm, xK_v),    spawn "tmux set-buffer -- \"$(xclip -o -selection clipboard)\"; tmux paste-buffer")
+
     -- , ((modm .|. shiftMask, xK_l),    spawn "xscreensaver-command -lock")
     , ((modm .|. shiftMask, xK_l),    spawn "gnome-screensaver-command --lock")
+
+    -- Spotify controls for pause, skip and previous
     , ((0, xK_Pause),    spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
     , ((0 .|. shiftMask, xK_Print),    spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
     , ((0 .|. shiftMask, xK_Scroll_Lock),    spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
 
-    , ((modm,               xK_d     ), withFocused (keysResizeWindow (-10,-10) (1, 1)))
-    , ((modm,               xK_s     ), withFocused (keysResizeWindow (10,10) (1,1)))
-    , ((modm .|. shiftMask, xK_d     ), withFocused (keysAbsResizeWindow (-10,-10) (1024,752)))
-    , ((modm .|. shiftMask, xK_s     ), withFocused (keysAbsResizeWindow (10,10) (1024,752)))
-    , ((modm,               xK_a     ), withFocused (keysMoveWindowTo (512,384) (1%2,1%2)))
-
     -- Decrease/Increase volume.
     , ((0, xK_Print), spawn "amixer -q set Master 2%- && amixer -q set Front 2%-")
-
     , ((0, xK_Scroll_Lock), spawn "amixer -q set Master 2%+ && amixer -q set Front 2%+")
 
     ]
@@ -319,10 +311,10 @@ scratchpads = [
      NS "spotify" "spotify" (className =? "Spotify")
      (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
 
-     NS "urxvtc1" "urxvtc -name urxvtc1" (title =? "urxvtc1")
+     NS "urxvtc1" "urxvtc -name urxvtc1 -pe tabbed -bg '#000033'" (title =? "urxvtc1")
      (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
 
-     NS "urxvtc2" "urxvtc -name urxvtc2" (title =? "urxvtc2")
+     NS "urxvtc2" "urxvtc -name urxvtc2 -pe tabbed -bg '#330000'" (title =? "urxvtc2")
      (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)),
 
      NS "xpad" "xpad" (className =? "xpad")
