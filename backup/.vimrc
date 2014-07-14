@@ -9,7 +9,7 @@ noremap \ ,
 let perl_nofold_packages=1
 let perl_include_pod = 1
 let perl_extended_vars = 1
-let g:startify_files_number = 25 
+let g:startify_files_number = 20 
 let g:startify_change_to_dir = 0 
 let g:startify_list_order = ['bookmarks', 'dir', 'files', 'sessions']
 let g:startify_bookmarks = [ '~/.vimrc', '~/.xmonad/xmonad.hs', '~/.bashrc', '~/.xsession']
