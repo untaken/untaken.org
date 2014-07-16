@@ -311,10 +311,10 @@ scratchpads = [
      NS "spotify" "spotify" (className =? "Spotify")
      (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
 
-     NS "urxvtc1" "urxvtc -name urxvtc1 -pe tabbed -bg '#000033'" (title =? "urxvtc1")
+     NS "urxvtc1" "urxvtc -name urxvtc1 -pe tabbed -bg '#000033'" (appName =? "urxvtc1")
      (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
 
-     NS "urxvtc2" "urxvtc -name urxvtc2 -pe tabbed -bg '#330000'" (title =? "urxvtc2")
+     NS "urxvtc2" "urxvtc -name urxvtc2 -pe tabbed -bg '#330000'" (appName =? "urxvtc2")
      (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)),
 
      NS "xpad" "xpad" (className =? "xpad")
