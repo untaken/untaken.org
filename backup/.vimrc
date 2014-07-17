@@ -35,6 +35,7 @@ nnoremap <Space> 3<C-d>   " Pagedown by 3 lines pressing Space
 " URxvt.keysym.Shift-space: B
 nnoremap <S-b> 3<C-y>     " PageUp by 3 lines pressing Shift+B
 
+set number
 set backspace=indent,eol,start
 set autoindent
 set copyindent
