@@ -1,6 +1,7 @@
 call pathogen#infect()
 Helptags
 
+set path+=./**
 let Tlist_Show_One_File = 1
 let g:Powerline_stl_path_style = 'full'
 let g:Powerline_symbols = 'fancy'
@@ -93,7 +94,7 @@ nnoremap <leader>d :Dispatch<CR>
 
 vmap <Leader>d :<C-U>1,'<-1d\|'>+1,$d<CR>gg
 
-map wc :Make<cr>
+map <Leader>wc :Make<cr>
 map diff :!cd %:h && git diff %:t<cr>
 map com :!cd %:h && git pull && git commit %:t<cr>
 map rs :!restartapache<cr>
