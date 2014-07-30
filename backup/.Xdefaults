@@ -110,6 +110,7 @@ xscreensaver.passwd.thermometer.width: 8
 !datestamp format--see the strftime(3) manual page for details
 xscreensaver.dateFormat: %I:%M%P %a %b %d, %Y 
 
-URxvt.keysym.M-C-slash:   perl:aAtt:complete
+!URxvt.keysym.M-C-slash:   perl:aAtt:word-complete
+URxvt.keysym.M-C-slash:   perl:aAtt:fuzzy-WORD-complete
 URxvt.keysym.M-question:  perl:aAtt:skeleton-complete
 URxvt.keysym.M-quotedbl:  perl:aAtt:undo
