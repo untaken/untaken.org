@@ -1,104 +1,104 @@
-[submodule "backup/.vim/bundle/gundo"]
-	path = backup/.vim/bundle/gundo
+[submodule "dotfiles/.vim/bundle/gundo"]
+	path = dotfiles/.vim/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
-[submodule "backup/.vim/bundle/ctrlp"]
-	path = backup/.vim/bundle/ctrlp
+[submodule "dotfiles/.vim/bundle/ctrlp"]
+	path = dotfiles/.vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "backup/.vim/bundle/vim-startify"]
-	path = backup/.vim/bundle/vim-startify
+[submodule "dotfiles/.vim/bundle/vim-startify"]
+	path = dotfiles/.vim/bundle/vim-startify
 	url = https://github.com/mhinz/vim-startify.git
-[submodule "backup/.vim/bundle/vim-powerline"]
-	path = backup/.vim/bundle/vim-powerline
+[submodule "dotfiles/.vim/bundle/vim-powerline"]
+	path = dotfiles/.vim/bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
-[submodule "backup/.vim/bundle/vim-ack"]
-	path = backup/.vim/bundle/vim-ack
+[submodule "dotfiles/.vim/bundle/vim-ack"]
+	path = dotfiles/.vim/bundle/vim-ack
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "backup/.vim/bundle/nerdcommenter"]
-	path = backup/.vim/bundle/nerdcommenter
+[submodule "dotfiles/.vim/bundle/nerdcommenter"]
+	path = dotfiles/.vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "backup/.vim/bundle/minibufexpl"]
-	path = backup/.vim/bundle/minibufexpl
+[submodule "dotfiles/.vim/bundle/minibufexpl"]
+	path = dotfiles/.vim/bundle/minibufexpl
 	url = https://github.com/fholgado/minibufexpl.vim.git
-[submodule "backup/.vim/bundle/snipmate"]
-	path = backup/.vim/bundle/snipmate
+[submodule "dotfiles/.vim/bundle/snipmate"]
+	path = dotfiles/.vim/bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
     ignore = dirty
-[submodule "backup/.vim/bundle/supertab"]
-	path = backup/.vim/bundle/supertab
+[submodule "dotfiles/.vim/bundle/supertab"]
+	path = dotfiles/.vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule "backup/.vim/bundle/vim-autoclose"]
-	path = backup/.vim/bundle/vim-autoclose
+[submodule "dotfiles/.vim/bundle/vim-autoclose"]
+	path = dotfiles/.vim/bundle/vim-autoclose
 	url = https://github.com/Townk/vim-autoclose.git
-[submodule "backup/.vim/bundle/vim-fugitive"]
-	path = backup/.vim/bundle/vim-fugitive
+[submodule "dotfiles/.vim/bundle/vim-fugitive"]
+	path = dotfiles/.vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "backup/.vim/bundle/vim-gitgutter"]
-	path = backup/.vim/bundle/vim-gitgutter
+[submodule "dotfiles/.vim/bundle/vim-gitgutter"]
+	path = dotfiles/.vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "backup/.vim/bundle/LustyJuggler"]
-	path = backup/.vim/bundle/LustyJuggler
+[submodule "dotfiles/.vim/bundle/LustyJuggler"]
+	path = dotfiles/.vim/bundle/LustyJuggler
 	url = https://github.com/vim-scripts/LustyJuggler.git
-[submodule "backup/.vim/bundle/textobj-word-column"]
-	path = backup/.vim/bundle/textobj-word-column
+[submodule "dotfiles/.vim/bundle/textobj-word-column"]
+	path = dotfiles/.vim/bundle/textobj-word-column
 	url = https://github.com/coderifous/textobj-word-column.vim.git
-[submodule "backup/.vim/bundle/vim-surround"]
-	path = backup/.vim/bundle/vim-surround
+[submodule "dotfiles/.vim/bundle/vim-surround"]
+	path = dotfiles/.vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "backup/.vim/bundle/powerline"]
-	path = backup/.vim/bundle/powerline
+[submodule "dotfiles/.vim/bundle/powerline"]
+	path = dotfiles/.vim/bundle/powerline
 	url = https://github.com/Lokaltog/powerline.git
-[submodule "backup/.vim/bundle/MatchTag"]
-	path = backup/.vim/bundle/MatchTag
+[submodule "dotfiles/.vim/bundle/MatchTag"]
+	path = dotfiles/.vim/bundle/MatchTag
 	url = https://github.com/gregsexton/MatchTag.git
-[submodule "backup/.vim/bundle/vim-unimpaired"]
-	path = backup/.vim/bundle/vim-unimpaired
+[submodule "dotfiles/.vim/bundle/vim-unimpaired"]
+	path = dotfiles/.vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "backup/.vim/bundle/vim-colors-solarized"]
-	path = backup/.vim/bundle/vim-colors-solarized
+[submodule "dotfiles/.vim/bundle/vim-colors-solarized"]
+	path = dotfiles/.vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "backup/.vim/bundle/gitv"]
-	path = backup/.vim/bundle/gitv
+[submodule "dotfiles/.vim/bundle/gitv"]
+	path = dotfiles/.vim/bundle/gitv
 	url = https://github.com/gregsexton/gitv.git
-[submodule "backup/.vim/bundle/vim-smooth-scroll"]
-	path = backup/.vim/bundle/vim-smooth-scroll
+[submodule "dotfiles/.vim/bundle/vim-smooth-scroll"]
+	path = dotfiles/.vim/bundle/vim-smooth-scroll
 	url = https://github.com/terryma/vim-smooth-scroll.git
-[submodule "backup/.vim/bundle/nerdtree"]
-	path = backup/.vim/bundle/nerdtree
+[submodule "dotfiles/.vim/bundle/nerdtree"]
+	path = dotfiles/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "backup/.vim/bundle/tagbar"]
-	path = backup/.vim/bundle/tagbar
+[submodule "dotfiles/.vim/bundle/tagbar"]
+	path = dotfiles/.vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
-[submodule "backup/.vim/bundle/taglist"]
-	path = backup/.vim/bundle/taglist
+[submodule "dotfiles/.vim/bundle/taglist"]
+	path = dotfiles/.vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
     ignore = dirty
-[submodule "backup/.vim/bundle/conque-shell"]
-	path = backup/.vim/bundle/conque-shell
+[submodule "dotfiles/.vim/bundle/conque-shell"]
+	path = dotfiles/.vim/bundle/conque-shell
 	url = https://github.com/vim-scripts/Conque-Shell.git
-[submodule "backup/.vim/bundle/vim-shell"]
-	path = backup/.vim/bundle/vim-shell
+[submodule "dotfiles/.vim/bundle/vim-shell"]
+	path = dotfiles/.vim/bundle/vim-shell
 	url = https://github.com/xolox/vim-shell.git
-[submodule "backup/.vim/bundle/vim-misc"]
-	path = backup/.vim/bundle/vim-misc
+[submodule "dotfiles/.vim/bundle/vim-misc"]
+	path = dotfiles/.vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
-[submodule "backup/.vim/bundle/LustyExplorer"]
-	path = backup/.vim/bundle/LustyExplorer
+[submodule "dotfiles/.vim/bundle/LustyExplorer"]
+	path = dotfiles/.vim/bundle/LustyExplorer
 	url = https://github.com/vim-scripts/LustyExplorer.git
-[submodule "backup/Monaco_Linux-Powerline"]
-	path = backup/Monaco_Linux-Powerline
+[submodule "dotfiles/Monaco_Linux-Powerline"]
+	path = dotfiles/Monaco_Linux-Powerline
 	url = https://gist.github.com/1634235.git
-[submodule "backup/.vim/bundle/rainbow_parentheses"]
-	path = backup/.vim/bundle/rainbow_parentheses
+[submodule "dotfiles/.vim/bundle/rainbow_parentheses"]
+	path = dotfiles/.vim/bundle/rainbow_parentheses
 	url = https://github.com/kien/rainbow_parentheses.vim.git
-[submodule "backup/.vim/bundle/vim-css-color"]
-	path = backup/.vim/bundle/vim-css-color
+[submodule "dotfiles/.vim/bundle/vim-css-color"]
+	path = dotfiles/.vim/bundle/vim-css-color
 	url = https://github.com/ap/vim-css-color.git
-[submodule "backup/.vim/bundle/vim-dispatch"]
-	path = backup/.vim/bundle/vim-dispatch
+[submodule "dotfiles/.vim/bundle/vim-dispatch"]
+	path = dotfiles/.vim/bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
-[submodule "backup/.vim/bundle/vim-togglelist"]
-	path = backup/.vim/bundle/vim-togglelist
+[submodule "dotfiles/.vim/bundle/vim-togglelist"]
+	path = dotfiles/.vim/bundle/vim-togglelist
 	url = https://github.com/milkypostman/vim-togglelist.git
 [submodule "EasyMotion"]
-	path = backup/.vim/bundle/vim-easymotion
+	path = dotfiles/.vim/bundle/vim-easymotion
 	url = https://github.com/wilywampa/vim-easymotion.git
