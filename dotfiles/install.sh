@@ -3,17 +3,17 @@ sudo aptitude -y install xmonad vim-gtk vim git subversion rxvt-unicode-256color
 # Additional debs I like installed
 sudo aptitude -y install ffmpeg mencoder
 sudo aptitude -y ffmpeg mencoder
-git clone --recursive https://github.com/untaken/untaken.org.git ~/untaken
+git clone --recursive https://github.com/untaken/untaken.org.git ~/untaken.org
 mkdir ~/.xmonad/ ~/bin/
-ln -s ~/untaken/backup/.xsession ~/.xsession
-ln -s ~/untaken/backup/.Xdefaults ~/.Xdefaults
-ln -s ~/untaken/backup/xmonad.hs ~/.xmonad/xmonad.hs
-ln -s ~/untaken/backup/.xmobarrc ~/.xmobarrc
-ln -s ~/untaken/backup/.tmux.conf ~/.tmux.conf
-ln -s ~/untaken/backup/notifty-service.psgi ~/bin/notifty-service.psgi
-ln -s ~/untaken/backup/.vimrc ~/.vimrc
-ln -s ~/untaken/backup/.vim ~/.vim
-sudo cp ~/untaken/backup/default.desktop /usr/share/xsessions/default.desktop
+ln -s ~/untaken.org/dotfiles/.xsession ~/.xsession
+ln -s ~/untaken.org/dotfiles/.Xdefaults ~/.Xdefaults
+ln -s ~/untaken.org/dotfiles/xmonad.hs ~/.xmonad/xmonad.hs
+ln -s ~/untaken.org/dotfiles/.xmobarrc ~/.xmobarrc
+ln -s ~/untaken.org/dotfiles/.tmux.conf ~/.tmux.conf
+ln -s ~/untaken.org/dotfiles/notifty-service.psgi ~/bin/notifty-service.psgi
+ln -s ~/untaken.org/dotfiles/.vimrc ~/.vimrc
+ln -s ~/untaken.org/dotfiles/.vim ~/.vim
+sudo cp ~/untaken.org/dotfiles/default.desktop /usr/share/xsessions/default.desktop
 mkdir ~/.fonts
 git clone https://gist.github.com/1634235.git ~/.fonts/
 fc-cache -vf
