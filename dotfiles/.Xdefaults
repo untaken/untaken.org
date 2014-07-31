@@ -1,0 +1,116 @@
+true.urlLauncher:      /usr/bin/firefox
+URxvt.matcher.button:   1
+URxvt.perl-ext-common:  default,matcher,selection,-tabbed,autocomplete-ALL-the-things,osc-xterm-clipboard
+URxvt.selection.pattern-0: ([[:word:]]+)
+URxvt.keysym.C-BackSpace:       \033[33~
+URxvt.keysym.Shift-space: B 
+
+URxvt*cursorColor: Green 
+URxvt*urgentOnBell: true
+URxvt.iso14755: False
+URxvt.termName:             rxvt-256color
+URxvt*geometry: 140x50
+! URxvt.depth: 33
+! URxvt.background: [80]#2C001E
+urxvt*depth: 32
+URxvt.background: [60]#000033
+IRC*depth: 32
+IRC.background: [65]#000000
+Tmux1*depth: 32
+Tmux1.background: [65]#000000
+Tmux2*depth: 32
+Tmux2.background: [65]#000000
+! urxvt*background: rgba:0000/0000/0200/c800
+URxvt*foreground:White
+URxvt*borderLess: false
+URxvt.visualBell: false
+URxvt*scrollBar: false
+URxvt*scrollstyle: plain
+URxvt*scrollBar_right: 1
+URxvt*scrollTtyOutput: false
+URxvt*scrollTtyKeypress: true
+URxvt*secondaryScroll: true
+URxvt*saveLines: 16000
+
+Urxvt*foreground: #f2f2f2
+Urxvt*background: #101010
+
+! COLOR PALETTE
+! black
+URxvt.color0  : #2E2E34343636
+URxvt.color8  : #555557575353
+! red
+URxvt.color1  : #CCCC00000000
+URxvt.color9  : #EFEF29292929
+! green
+URxvt.color2  : #4E4E9A9A0606
+URxvt.color10 : #8A8AE2E23434
+! yellow
+URxvt.color3  : #C4C4A0A00000
+URxvt.color11 : #FCFCE9E94F4F
+! blue
+URxvt.color4  : #34346565A4A4
+URxvt.color12 : #72729F9FCFCF
+! magenta
+URxvt.color5  : #757550507B7B
+URxvt.color13 : #ADAD7F7FA8A8
+! cyan
+URxvt.color6  : #060698209A9A
+URxvt.color14 : #3434E2E2E2E2
+! white
+URxvt.color7  : #D3D3D7D7CFCF
+!URxvt.color14 : #EEEEEEEEECEC
+
+
+! FONTS
+! $ fc-list lists available fonts
+URxvt.letterSpace: -1
+
+URxvt*font:                 xft:Monaco for Powerline:regular:size=8.6:antialias=false
+URxvt*imFont:               xft:Monaco for Powerline:regular:size=8.6:antialias=false
+URxvt*boldFont:             xft:Monaco for Powerline:bold:size=8.6:antialias=false
+URxvt*italicFont:           xft:Monaco for Powerline:italic:size=8.6:antialias=false
+URxvt*boldItalicFont:       xft:Monaco for Powerline:bold:italic:size=8.6:antialias=false
+
+Xft.dpi: 96
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.autohint: true
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.rgba: rgb
+
+! xscreensaver ---------------------------------------------------------------
+
+!font settings
+xscreensaver.Dialog.headingFont: -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont: -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont: -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont: -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont: -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont: -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont: -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground: #ffffff
+xscreensaver.Dialog.background: #111111
+xscreensaver.Dialog.topShadowColor: #111111
+xscreensaver.Dialog.bottomShadowColor: #111111
+xscreensaver.Dialog.Button.foreground: #666666
+xscreensaver.Dialog.Button.background: #ffffff
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground: #666666
+xscreensaver.Dialog.text.background: #ffffff
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth: 20
+xscreensaver.Dialog.shadowThickness: 2
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground: #ff0000
+xscreensaver.passwd.thermometer.background: #000000
+xscreensaver.passwd.thermometer.width: 8
+!datestamp format--see the strftime(3) manual page for details
+xscreensaver.dateFormat: %I:%M%P %a %b %d, %Y 
+
+!URxvt.keysym.M-C-slash:   perl:aAtt:word-complete
+URxvt.keysym.M-C-slash:   perl:aAtt:fuzzy-WORD-complete
+URxvt.keysym.M-question:  perl:aAtt:skeleton-complete
+URxvt.keysym.M-quotedbl:  perl:aAtt:undo
