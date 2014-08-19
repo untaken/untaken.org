@@ -63,6 +63,7 @@ syntax on
 let g:solarized_termcolors = '256'
 set background=light
 colorscheme solarized
+
 hi! link SignColumn LineNr " Git gutter same color as linenumber
 set cursorline
 
@@ -125,10 +126,14 @@ nnoremap <silent> <Leader><F3> :call GitGutterToggle()<CR>
 "nnoremap <silent> <F3> :set nonumber!|GitGutterToggle
 " F4 in console mode: Gundo for locating code changes
 nnoremap <F4> :GundoToggle<CR>
-" F5 in console mode: Perltidy
+" F5 in console mode: Perltidy on whole file
 au Filetype perl nmap <silent> <F5> :call DoTidy()<CR>
-" F5 in visual  mode: Perltidy
+" F5 in console mode for PHP to indent file
+au Filetype php nmap <silent> <F5> ggVG=<CR>
+" F5 in visual mode: Perltidy
 au Filetype perl vmap <silent> <F5> :Tidy<CR>
+" F5 in visual mode for PHP use =
+au Filetype php vmap <silent> <F5> =<CR>
 " F6 in console mode: Hilights search cases
 map <silent> <F6> :se invhlsearch<CR>
 " F7 in console mode: Comments code
