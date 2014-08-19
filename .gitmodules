@@ -102,3 +102,6 @@
 [submodule "EasyMotion"]
 	path = dotfiles/.vim/bundle/vim-easymotion
 	url = https://github.com/wilywampa/vim-easymotion.git
+[submodule "dotfiles/.vim/bundle/PHP-Indenting-for-VIm"]
+	path = dotfiles/.vim/bundle/PHP-Indenting-for-VIm
+	url = https://github.com/2072/PHP-Indenting-for-VIm.git
