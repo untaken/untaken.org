@@ -10,9 +10,9 @@ noremap \ ,
 let perl_nofold_packages=1
 let perl_include_pod = 1
 let perl_extended_vars = 1
-let g:startify_files_number = 20 
+let g:startify_files_number = 35 
 let g:startify_change_to_dir = 0 
-let g:startify_list_order = ['bookmarks', 'dir', 'files', 'sessions']
+let g:startify_list_order = ['bookmarks', 'files', 'sessions']
 let g:startify_bookmarks = [ '~/.vimrc', '~/.xmonad/xmonad.hs', '~/.bashrc', '~/.xsession']
 let g:ctrlp_open_multiple_files = 'i'
 let g:ctrlp_max_files=0
@@ -90,6 +90,12 @@ autocmd BufRead,BufNewFile *.t let b:dispatch = 'prove -v %'
 " Insert a perl debugger stop, so in perl debugger c continues till it hits it
 nnoremap <Leader>di o$DB::single = 1;<ESC>:w<CR>
 
+nnoremap <Leader>w1 owarn "WARN 1";<ESC>:w<CR>
+nnoremap <Leader>w2 owarn "WARN 2";<ESC>:w<CR>
+nnoremap <Leader>w3 owarn "WARN 3";<ESC>:w<CR>
+nnoremap <Leader>w4 owarn "WARN 4";<ESC>:w<CR>
+nnoremap <Leader>w5 owarn "WARN 5";<ESC>:w<CR>
+
 " Jump to next tag
 nnoremap <Leader>[ :tprevious<CR>
 
@@ -108,7 +114,7 @@ map rs :!restartapache<cr>
 map run :w<cr>:!perl %
 map rund :w<cr>:!perl -d %<cr>
 " Add a mapping for :bd but will work with a vsplit, so it don't close it
-command! BD silent e# | bd#
+command! BD silent bp|bd #
 map <Leader>bd :BD<cr>
 
 " Allow ctrl+down/up to act like mouse scroll
@@ -149,6 +155,7 @@ map <silent> <F11> :bp<CR>
 map <silent> <F12> :bn<CR>
 
 nnoremap <Leader>s :Startify<CR>
+nnoremap <Leader>i :DimInactiveToggle<CR>
 
 " Paste text from console mode
 nnoremap <MiddleMouse> "*p
@@ -158,11 +165,43 @@ vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
 
+" Move to windows with ctrl+[hjkl]
+map <silent> <C-Left> :call CreateNewWindow('h')<CR>
+map <silent> <C-Right> :call CreateNewWindow('l')<CR>
+map <silent> <C-Down> :call CreateNewWindow('j')<CR>
+map <silent> <C-Up> :call CreateNewWindow('k')<CR>
+
+func! CreateNewWindow(direction)
+  let oldw = winnr()
+  exe "wincmd " . a:direction
+  let neww = winnr()
+
+  if a:direction == 'l' || a:direction == 'h'
+      if oldw == neww
+       exe "wincmd v"
+       exe "wincmd " . a:direction
+      endif
+  else
+      if oldw == neww
+       exe "wincmd s"
+       exe "wincmd " . a:direction
+      endif
+  endif
+endfunction
+
 " disabling arrows keys so I get used to hjkl
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
+" mapping to the arrow keys don't work in tmux without this 
+if &term =~ '^screen'
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
 
 " Perltidy F5 shortcut {{{
 "define :Tidy command to run perltidy on visual selection || entire buffer"
