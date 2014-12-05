@@ -5,21 +5,32 @@ URxvt.selection.pattern-0: ([[:word:]]+)
 URxvt.keysym.C-BackSpace:       \033[33~
 URxvt.keysym.Shift-space: B 
 
-URxvt*cursorColor: Green 
+URxvt.keysym.Control-Shift-K:  \033[1;5A
+URxvt.keysym.Control-Shift-J:  \033[1;5B
+URxvt.keysym.Control-Shift-H:  \033[1;5D
+URxvt.keysym.Control-Shift-L:  \033[1;5C
+
+URxvt.keysym.Control-Up:   \033[1;5A
+URxvt.keysym.Control-Down:    \033[1;5B
+URxvt.keysym.Control-Left:    \033[1;5D
+URxvt.keysym.Control-Right:    \033[1;5C
+
+URxvt*cursorColor: Green
 URxvt*urgentOnBell: true
 URxvt.iso14755: False
+URxvt.iso14755_52: False
 URxvt.termName:             rxvt-256color
 URxvt*geometry: 140x50
 ! URxvt.depth: 33
 ! URxvt.background: [80]#2C001E
 urxvt*depth: 32
-URxvt.background: [60]#000033
+URxvt.background: [80]#000033
 IRC*depth: 32
 IRC.background: [65]#000000
 Tmux1*depth: 32
-Tmux1.background: [65]#000000
+Tmux1.background: [80]#000000
 Tmux2*depth: 32
-Tmux2.background: [65]#000000
+Tmux2.background: [80]#000000
 ! urxvt*background: rgba:0000/0000/0200/c800
 URxvt*foreground:White
 URxvt*borderLess: false
@@ -66,18 +77,20 @@ URxvt.color7  : #D3D3D7D7CFCF
 ! $ fc-list lists available fonts
 URxvt.letterSpace: -1
 
-URxvt*font:                 xft:Monaco for Powerline:regular:size=8.6:antialias=false
-URxvt*imFont:               xft:Monaco for Powerline:regular:size=8.6:antialias=false
-URxvt*boldFont:             xft:Monaco for Powerline:bold:size=8.6:antialias=false
-URxvt*italicFont:           xft:Monaco for Powerline:italic:size=8.6:antialias=false
-URxvt*boldItalicFont:       xft:Monaco for Powerline:bold:italic:size=8.6:antialias=false
+URxvt*font:                 xft:Monaco for Powerline:regular:size=8.6
+URxvt*imFont:               xft:Monaco for Powerline:regular:size=8.6
+URxvt*boldFont:             xft:Monaco for Powerline:bold:size=8.6
+URxvt*italicFont:           xft:Monaco for Powerline:italic:size=8.6
+URxvt*boldItalicFont:       xft:Monaco for Powerline:bold:italic:size=8.6
+
 
 Xft.dpi: 96
 Xft.lcdfilter: lcddefault
-Xft.antialias: true
-Xft.autohint: true
+Xft.antialias: false
+!Xft.autohint: true
 Xft.hinting: true
 Xft.hintstyle: hintfull
+!Xft.hintstyle: hintslight
 Xft.rgba: rgb
 
 ! xscreensaver ---------------------------------------------------------------
