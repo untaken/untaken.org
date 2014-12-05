@@ -27,6 +27,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.LayoutHints
 import XMonad.Layout.LayoutModifier
+import XMonad.Layout.Gaps
 import XMonad.Layout.Grid
 import XMonad.Layout.ThreeColumns
 import XMonad.Util.Scratchpad
@@ -85,7 +86,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "dmenu_run")
 
     -- Shortcut to restart services
-    , ((0, xK_Super_L      ), spawn "~/bin/restart_services.sh 2> /dev/null")
+    , ((0, xK_Super_L      ), spawn "bash ~/bin/restart_services.sh 2> /dev/null")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -232,9 +233,10 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 -- Layouts {{{
 
+-- myLayout  =  gaps [(U, 24)] $ spacing 7                                                          $
 myLayout  =  spacing 7                                                          $
-             onWorkspaces ["1:tmux", "3:web", "5:spotify", "6:vbox" ]  allLayout $
-             onWorkspaces ["2:tmux", "4:email"]                        tallLayout $
+             onWorkspaces ["1:tmux", "2:tmux", "3:web", "5:spotify", "6:vbox" ]  allLayout $
+             onWorkspaces ["4:email"]                        tallLayout $
              -- onWorkspaces ["4:thunar"]                                 thunarLayout $
              allLayout
 -- Layout
@@ -267,6 +269,8 @@ myManageHook = (composeAll . concat $
     , [className    =?           "VirtualBox" --> doShift "6:vbox" ]
     , [className    =? "Pidgin" <&&> title =? "Buddy List" --> doShift "4:email"]
     , [className    =? c          --> doCenterFloat | c <- myFloats ]
+    , [className =? "Unity-2d-panel"    --> doIgnore ]
+    , [className =? "Unity-2d-launcher" --> doIgnore ]
     ])
 
     where
@@ -281,7 +285,7 @@ myManageHook = (composeAll . concat $
         -- myThunar  = ["Thunar","Gedit"]
 
         -- resources
-        myIgnores = ["desktop","desktop_window","notify-osd","stalonetray","trayer","xfce4-notifyd"]
+        myIgnores = ["desktop","desktop_window","notify-osd","stalonetray","trayer","xfce4-notifyd","lxpanel","panel"]
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -342,7 +346,7 @@ myStartupHook = spawn "xset r rate 400 75"
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-  xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmobarrc_2nd"
+--  xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmobarrc_2nd"
   xmproc <- spawnPipe "/usr/bin/xmobar --screen 1 /home/luke/.xmobarrc"
   xmonad $ ewmh defaultConfig {
       -- simple stuff
