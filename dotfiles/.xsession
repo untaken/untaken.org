@@ -4,7 +4,7 @@ trayer --edge top --align right --widthtype pixel --width 180 --SetDockType true
 
 urxvtd &
 if [ -e ~/.screenlayout/layout.sh ] ; then
-    ~/.screenlayout/work.sh
+    ~/.screenlayout/work-3monitors.sh
 fi
 
 xrdb <$HOME/.Xdefaults
