@@ -2,3 +2,4 @@
 backup/.vim/bundle/snipmate/doc/tags
 backup/.vim/bundle/taglist/doc/tags
 backup/.vim/.netrwhist
+*.swp
