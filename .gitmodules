@@ -105,3 +105,9 @@
 [submodule "dotfiles/.vim/bundle/PHP-Indenting-for-VIm"]
 	path = dotfiles/.vim/bundle/PHP-Indenting-for-VIm
 	url = https://github.com/2072/PHP-Indenting-for-VIm.git
+[submodule "dotfiles/.vim/bundle/vim-diminactive"]
+	path = dotfiles/.vim/bundle/vim-diminactive
+	url = https://github.com/blueyed/vim-diminactive.git
+[submodule "dotfiles/.vim/bundle/vim-tmux-navigator"]
+	path = dotfiles/.vim/bundle/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
