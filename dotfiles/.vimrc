@@ -61,8 +61,11 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 filetype plugin indent on
 syntax on
 let g:solarized_termcolors = '256'
-set background=light
-colorscheme solarized
+let g:solarized_termtrans=1
+set background=dark
+"colorscheme solarized
+"set background=dark
+"set transparency=10
 
 hi! link SignColumn LineNr " Git gutter same color as linenumber
 set cursorline
@@ -120,6 +123,12 @@ map <Leader>bd :BD<cr>
 " Allow ctrl+down/up to act like mouse scroll
 nmap <C-Down> <C-E>
 nmap <C-Up> <C-Y>
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " F1 goes to top of screen and calls vim-easymotion
 nmap <silent> <F1> H,,w
