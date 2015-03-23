@@ -1,6 +1,6 @@
-true.urlLauncher:      /usr/bin/firefox
 URxvt.matcher.button:   1
 URxvt.perl-ext-common:  default,matcher,selection,-tabbed,autocomplete-ALL-the-things,osc-xterm-clipboard
+URxvt.url-launcher: /usr/bin/firefox
 URxvt.selection.pattern-0: ([[:word:]]+)
 URxvt.keysym.C-BackSpace:       \033[33~
 URxvt.keysym.Shift-space: B 
@@ -24,7 +24,8 @@ URxvt*geometry: 140x50
 ! URxvt.depth: 33
 ! URxvt.background: [80]#2C001E
 urxvt*depth: 32
-URxvt.background: [80]#000033
+! URxvt.background: [70]#000033
+URxvt.background: [70]#001F4C
 IRC*depth: 32
 IRC.background: [65]#000000
 Tmux1*depth: 32
