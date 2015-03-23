@@ -85,6 +85,7 @@ autocmd BufRead,BufNewFile *.psgi set filetype=perl
 autocmd FileType startify nnoremap <buffer> p :enew\|CtrlP<cr>
 
 " Allow g at startify screen to open files edited according to git
+" $DB::single = 1;
 autocmd FileType startify nnoremap <buffer> g :args `git ls-files -o --exclude-standard -m`<cr>
 
 autocmd BufRead,BufNewFile *.pl let b:dispatch = 'perl -d %'
@@ -163,7 +164,8 @@ map <silent> <F11> :bp<CR>
 " F12 in console mode: next buffer
 map <silent> <F12> :bn<CR>
 
-nnoremap <Leader>s :Startify<CR>
+noremap <Leader>s :update<CR>
+nnoremap <Leader><Leader>s :Startify<CR>
 nnoremap <Leader>i :DimInactiveToggle<CR>
 
 " Paste text from console mode
