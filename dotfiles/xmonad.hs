@@ -83,7 +83,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run")
+    , ((modm,               xK_p     ), spawn "dmenu_run -l 10")
 
     -- Shortcut to restart services
     , ((0, xK_Super_L      ), spawn "bash ~/bin/restart_services.sh 2> /dev/null")
@@ -316,10 +316,10 @@ scratchpads = [
      NS "spotify" "spotify" (className =? "Spotify")
      (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
 
-     NS "urxvtc1" "urxvtc -name urxvtc1 -pe tabbed -bg '#000033'" (appName =? "urxvtc1")
+     NS "urxvtc1" "urxvtc -name urxvtc1 -pe tabbed -bg '[90]#000033'" (appName =? "urxvtc1")
      (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)), 
 
-     NS "urxvtc2" "urxvtc -name urxvtc2 -pe tabbed -bg '#330000'" (appName =? "urxvtc2")
+     NS "urxvtc2" "urxvtc -name urxvtc2 -pe tabbed -bg '[90]#330000'" (appName =? "urxvtc2")
      (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)),
 
      NS "xpad" "xpad" (className =? "xpad")
