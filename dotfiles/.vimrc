@@ -61,9 +61,9 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 filetype plugin indent on
 syntax on
 let g:solarized_termcolors = '256'
-let g:solarized_termtrans=1
-set background=dark
-"colorscheme solarized
+"let g:solarized_termtrans=1
+colorscheme solarized
+set background=light
 "set background=dark
 "set transparency=10
 
