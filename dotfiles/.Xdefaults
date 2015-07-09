@@ -4,16 +4,24 @@ URxvt.url-launcher: /usr/bin/firefox
 URxvt.selection.pattern-0: ([[:word:]]+)
 URxvt.keysym.C-BackSpace:       \033[33~
 URxvt.keysym.Shift-space: B 
+URxvt.intensityStyles: false
 
 URxvt.keysym.Control-Shift-K:  \033[1;5A
 URxvt.keysym.Control-Shift-J:  \033[1;5B
 URxvt.keysym.Control-Shift-H:  \033[1;5D
 URxvt.keysym.Control-Shift-L:  \033[1;5C
 
+URxvt*keysym.Home: \033[1~
+URxvt*keysym.End: \033[4~
+
 URxvt.keysym.Control-Up:   \033[1;5A
 URxvt.keysym.Control-Down:    \033[1;5B
 URxvt.keysym.Control-Left:    \033[1;5D
 URxvt.keysym.Control-Right:    \033[1;5C
+
+! Pasting with autokey-gtk does not work without this:
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
 
 URxvt*cursorColor: Green
 URxvt*urgentOnBell: true
@@ -25,7 +33,7 @@ URxvt*geometry: 140x50
 ! URxvt.background: [80]#2C001E
 urxvt*depth: 32
 ! URxvt.background: [70]#000033
-URxvt.background: [70]#001F4C
+URxvt.background: [100]#001F4C
 IRC*depth: 32
 IRC.background: [65]#000000
 Tmux1*depth: 32
