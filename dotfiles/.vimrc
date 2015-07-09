@@ -1,5 +1,7 @@
 call pathogen#infect()
-Helptags
+
+set nocompatible
+set t_Co=16
 
 set path+=./**
 let Tlist_Show_One_File = 1
@@ -58,12 +60,10 @@ set wildmode=list:longest,full
 set complete=.,w,b,u,t
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+colorscheme solarized 
+let g:solarized_termcolors=16  
 filetype plugin indent on
 syntax on
-let g:solarized_termcolors = '256'
-"let g:solarized_termtrans=1
-colorscheme solarized
-set background=light
 "set background=dark
 "set transparency=10
 
